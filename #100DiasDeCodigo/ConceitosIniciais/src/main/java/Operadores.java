@@ -30,5 +30,12 @@ public class Operadores {
 
         System.out.println(num);
 
+        /* Ordem de precedência dos operadores:
+        * 1. ()
+        * 2. * /
+        * 3. - +
+        * */
+
+
     }
 }
