@@ -22,25 +22,26 @@ public class ExerciciosWhile {
 
     // a.
     private void enchendoCaixaDagua() {
-        float litros = 0;
-        int count = 0;
-        while (litros <= 2000) {
-            litros += 7;
-            count++;
+        int capacidade = 2000;
+        int volumeBalao = 7;
+        int totalBaloes = 0;
+
+        while ((totalBaloes * volumeBalao) + volumeBalao < capacidade) {
+            totalBaloes++;
         }
-        System.out.println(count);
+        System.out.println("Quantidade: " + totalBaloes);
     }
 
     // b.
     private void imprimindoNumeros() {
         int i = 1;
         while (i <= 50) {
-            if (i % 3 == 0) {
+            if (i % 15 == 0) {
+                System.out.print("FizzBuzz ");
+            } else if (i % 3 == 0) {
                 System.out.print("Buzz ");
             } else if (i % 5 == 0) {
                 System.out.print("Fizz ");
-            } else if (i % 3 == 0 && i % 5 == 0) {
-                System.out.print("FizzBuzz ");
             } else {
                 System.out.print(i + " ");
             }
@@ -58,7 +59,23 @@ public class ExerciciosWhile {
     }
 
     // d.
+    private boolean verificandoStrings (String caracteres) {
+        caracteres = caracteres.toLowerCase();
+        int tamanho = caracteres.length();
+        int i = 0;
+        int countX = 0;
+        int countO = 0;
 
+        while (i < tamanho) {
+            if (caracteres.charAt(i) == 'x') {
+                countX++;
+            } else if (caracteres.charAt(i) == 'o') {
+                countO++;
+            }
+            i++;
+        }
+         return (countX == countO) && (countX != 0);
+    }
 
     public static void main(String[] args) {
 
@@ -71,6 +88,12 @@ public class ExerciciosWhile {
         System.out.println("Escreva a sua frase: ");
         String frase = scanner.nextLine();
         exercicios.invertendoFrases(frase);
+        System.out.println();
+
+        System.out.println(exercicios.verificandoStrings("xXooox"));
+        System.out.println(exercicios.verificandoStrings("xxxxo"));
+        System.out.println(exercicios.verificandoStrings("bdefghjij"));
+        System.out.println(exercicios.verificandoStrings("ooooxzzzzz"));
 
 
         scanner.close();
