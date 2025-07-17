@@ -16,4 +16,4 @@
 
 * 8 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/blob/main/%23100DiasDeCodigo/ControleDeFluxo/src/main/java/ExerciciosWhile.java"> Resolução de exercícios com while</a>
 
-* 9 dias de código -<a href=""> Resolução de desafio + Tratamento de exceções</a>
+* 9 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/Excecoes/src/main/java"> Resolução de desafio + Tratamento de exceções</a>
