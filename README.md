@@ -1,4 +1,4 @@
-# <em>100 dias de código aprimorando e aplicando conhecimentos sobre a linguagem Java + tecnologia Android.<em> &#x1F468 &#x1F4DA
+## <em>100 dias de código aprimorando e aplicando conhecimentos sobre a linguagem Java + tecnologia Android.<em> 👨🏽‍💻📚
 
 * 1 dia de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/ConceitosIniciais/src/main/java"> Variáveis, tipos de dados e operadores em Java</a>
 
