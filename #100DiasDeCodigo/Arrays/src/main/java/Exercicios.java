@@ -27,11 +27,27 @@ public class Exercicios {
     }
 
     // 2.
+    private float mediaDeValores (float[] valores) {
+        if (valores == null || valores.length == 0) {
+            return 0;
+        }
 
+        float soma = 0;
+        for (int i = 0; i < valores.length; i++) {
+            soma += valores[i];
+        }
+
+        return soma / valores.length;
+    }
 
     public static void main(String[] args) {
         Exercicios exercicios = new Exercicios();
         String[] nomes = {"Natasha Alianovna Romanoff", "Stephen Vincent Strange", "Anthony Edward Stark"};
         exercicios.maiorString(nomes);
+
+        float[] valores1 = {14f, 5.3f, 63.5f, 34f, 15f};
+        float[] valores2 = {};
+        float[] valores3 = null;
+        System.out.println("A média dos valores é: " + exercicios.mediaDeValores(valores3));
     }
 }
