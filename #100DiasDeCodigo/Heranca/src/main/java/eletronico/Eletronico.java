@@ -1,9 +1,10 @@
 package eletronico;
 
-interface Eletronico {
+// SAM - Single Abstract Method
+public interface Eletronico {
 
     void ligar();
-    void desligar();
+    //void desligar();
 
     // override - sobrescrita
     // overload - sobrecarga

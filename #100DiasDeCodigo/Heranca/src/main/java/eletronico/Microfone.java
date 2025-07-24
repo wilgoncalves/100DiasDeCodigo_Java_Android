@@ -7,12 +7,7 @@ public class Microfone implements Eletronico {
 
     @Override
     public void ligar() {
-
-    }
-
-    @Override
-    public void desligar() {
-
+        System.out.println("Ajusta os decibeis");
     }
 
     private void gravar() {

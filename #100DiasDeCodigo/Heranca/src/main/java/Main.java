@@ -1,4 +1,5 @@
 import eletronico.Computador;
+import eletronico.Eletronico;
 import eletronico.Microfone;
 
 public class Main {
@@ -32,6 +33,16 @@ public class Main {
 
     }
 
+    // POLIMORFISMO:
+    private void imprimeFuncionamentoLigar(Eletronico e) {
+        // lógica
+        /*
+        a função possui sua lógica de funcionamento e logo após
+        chama a função ligar() dentro da classe anônima.
+        */
+        e.ligar();
+    }
+
     public static void main(String[] args) {
 
         Microfone microfone = new Microfone();
@@ -46,5 +57,29 @@ public class Main {
         System.out.println(main.toString()); // sobrescrita
         System.out.println(main.hashCode());
         System.out.println(main.equals(main2));
+
+        // POLIMORFISMO:
+        Eletronico e1 = new Computador();
+        Eletronico e2 = new Microfone();
+
+        new Main().imprimeFuncionamentoLigar(e1);
+        new Main().imprimeFuncionamentoLigar(e2);
+
+        // CLASSE ANÔNIMA:
+        new Main().imprimeFuncionamentoLigar(new Eletronico() {
+            @Override
+            public void ligar() {
+                System.out.println("Estou ligando classe anônima");
+            }
+        });
+
+        // LAMBDA:
+        new Main().imprimeFuncionamentoLigar(() -> {
+            System.out.println("Estou ligando classe anônima");
+            System.out.println("Estou ligando classe anônima");
+            System.out.println("Estou ligando classe anônima");
+        });
+
+
     }
 }
