@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ServicosActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seguros XPTO"
+        android:layout_marginTop="48dp"
+        android:padding="18dp"
+        android:textSize="26sp"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Serviços"
+        android:textSize="20sp"
+        android:padding="12dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="18dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Automóveis"
+            android:textSize="16sp"
+            android:padding="24dp"
+            android:gravity="center"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="8dp"
+            android:textStyle="italic|bold"
+            android:background="@color/grey" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Imóveis"
+            android:textSize="16sp"
+            android:padding="24dp"
+            android:gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="18dp"
+            android:textStyle="italic|bold"
+            android:background="@color/grey"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Novidades"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="18dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descontos de 5% ao assinar este mês!"
+        android:textSize="14sp"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="18dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="6dp"
+        android:text="Precisa de ajuda?"
+        android:textSize="20sp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:text="Entre em contato"/>
+
+</LinearLayout>

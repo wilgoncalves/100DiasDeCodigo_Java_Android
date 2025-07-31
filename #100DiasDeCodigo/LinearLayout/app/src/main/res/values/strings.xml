@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">LinearLayout</string>
+    <string name="click_here">Click here!</string>
+    <string name="senha">Senha</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="cadastre_se">Cadastre-se</string>
 </resources>
