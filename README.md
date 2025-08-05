@@ -49,3 +49,5 @@
 * 24 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/LinearLayout/app/src/main/res"> Criação de estilos e customização de temas</a>
 
 * 25 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/LinearLayout/app/src/main/res"> Scroll views e ImageView</a>
+
+* 26 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/LinearLayout/app/src/main/res"> Validação de dados e navegação entre páginas</a>
