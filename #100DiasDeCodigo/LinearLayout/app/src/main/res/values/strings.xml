@@ -5,4 +5,5 @@
     <string name="email">Email</string>
     <string name="login">Login</string>
     <string name="cadastre_se">Cadastre-se</string>
+    <string name="toast">Digite email e senha!</string>
 </resources>
