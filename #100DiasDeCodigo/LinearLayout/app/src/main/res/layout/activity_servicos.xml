@@ -7,7 +7,7 @@
     android:layout_margin="18dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ServicosActivity">
+    tools:context=".ui.ServicosActivity">
 
     <TextView
         android:layout_width="match_parent"
