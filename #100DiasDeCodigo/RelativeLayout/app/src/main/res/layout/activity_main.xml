@@ -7,19 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <View
+        android:id="@+id/view_first"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="#22E2FB"/>
+
     <TextView
         android:id="@+id/textview_1"
-        android:textSize="20sp"
+        android:textSize="25sp"
+        android:layout_alignTop="@+id/view_first"
+        android:layout_alignBottom="@+id/view_first"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!" />
 
-    <TextView
-        android:id="@+id/textview_2"
-        android:textSize="20sp"
-        android:layout_below="@+id/textview_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World 2!" />
 
 </RelativeLayout>

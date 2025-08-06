@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RelativeLayout</string>
+    <string name="nome_entrada">Olá, Nome e Sobrenome!</string>
 </resources>
