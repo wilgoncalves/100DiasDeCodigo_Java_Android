@@ -55,3 +55,5 @@
 * 27 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/RelativeLayout/app/src/main/res"> Ícones da aplicação e Relative Layout</a>
 
 * 28 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/RelativeLayout/app/src/main/res"> Novos conceitos sobre relative layout + Exercícios</a>
+
+* 29 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/RelativeLayout/app/src/main/res"> Criação de gradiente usando drawable + resolução de exercício</a>
