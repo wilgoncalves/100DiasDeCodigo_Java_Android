@@ -30,7 +30,8 @@
     
     <ImageView
         android:id="@+id/imageview_settings"
-        android:contentDescription="Configurações"
+        android:contentDescription="@string/desc_settings"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
@@ -41,7 +42,7 @@
 
     <ImageView
         android:id="@+id/imageview_close"
-        android:contentDescription="Fechar configurações"
+        android:contentDescription="@string/desc_close_settings"
         android:layout_marginEnd="32dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
@@ -53,6 +54,7 @@
     <TextView
         android:id="@+id/textview_battery_level"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:text="85%"
@@ -64,7 +66,7 @@
     <CheckBox
         android:id="@+id/checkbox_battery_level"
         android:layout_marginStart="32dp"
-        android:text="Nível de bateria"
+        android:text="@string/label_battery_level"
         android:textColor="@color/grey"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
