@@ -59,3 +59,5 @@
 * 29 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/RelativeLayout/app/src/main/res"> Criação de gradiente usando drawable + resolução de exercício</a>
 
 * 30 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/RelogioDeCabeceira/app/src/main"> Criação do aplicativo Relógio de Cabeceira</a>
+
+* 31 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/RelogioDeCabeceira/app/src/main"> Identificando elementos por ViewBinding e exibindo nível de bateria</a>
