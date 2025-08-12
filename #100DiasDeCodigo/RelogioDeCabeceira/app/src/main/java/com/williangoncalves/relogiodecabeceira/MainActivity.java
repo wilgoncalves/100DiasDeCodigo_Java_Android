@@ -132,6 +132,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         runnable.run();
     }
 
+    private void getLanguage() {
+        Locale.getDefault().getLanguage();             // en
+        Locale.getDefault().getISO3Language();         // eng
+        Locale.getDefault().getCountry();              // US
+        Locale.getDefault().getISO3Country();          // USA
+        Locale.getDefault().getDisplayCountry();       // United States
+        Locale.getDefault().getDisplayName();          // English (United States)
+        Locale.getDefault();                           // en_US
+        Locale.getDefault().getDisplayLanguage();      // English
+        Locale.getDefault().toLanguageTag();           // en-US
+    }
+
     private void hideOptions() {
         int duration = 400;
 
