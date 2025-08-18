@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ConstraintLayout</string>
+    <string name="o_que_vamos_aprender_hoje">O que vamos aprender hoje?</string>
+    <string name="ola_nome_e_sobrenome">Olá, Nome e sobrenome!</string>
 </resources>

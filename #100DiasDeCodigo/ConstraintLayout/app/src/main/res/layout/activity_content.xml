@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_margin="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContentActivity">
+
+    <TextView
+        android:id="@+id/textview_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="@string/ola_nome_e_sobrenome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/textview_learn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/o_que_vamos_aprender_hoje"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_name"
+        android:layout_marginTop="16dp" />
+
+    <ImageView
+        android:id="@+id/image_development"
+        android:src="@drawable/image_development"
+        android:contentDescription="Desenvolvimento"
+        android:layout_width="128dp"
+        android:layout_height="160dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/image_design"
+        app:layout_constraintTop_toBottomOf="@id/textview_learn" />
+
+    <ImageView
+        android:id="@+id/image_design"
+        android:src="@drawable/image_design"
+        android:contentDescription="Design"
+        android:layout_width="128dp"
+        android:layout_height="160dp"
+        app:layout_constraintTop_toBottomOf="@id/textview_learn"
+        app:layout_constraintStart_toEndOf="@id/image_development"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_below="@id/textview_learn" />
+
+    <ImageView
+        android:id="@+id/image_ai"
+        android:src="@drawable/image_ai"
+        android:contentDescription="Artificial Inteligence"
+        android:layout_width="128dp"
+        android:layout_height="160dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/image_explore"
+        app:layout_constraintTop_toBottomOf="@id/image_development" />
+
+    <ImageView
+        android:id="@+id/image_explore"
+        android:src="@drawable/image_explore"
+        android:contentDescription="Explore"
+        android:layout_width="128dp"
+        android:layout_height="160dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_design"
+        app:layout_constraintStart_toEndOf="@id/image_ai" />
+
+    <TextView
+        android:id="@+id/textview_popular_courses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/image_ai"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Cursos Populares" />
+
+    <TextView
+        android:id="@+id/textview_see_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/textview_popular_courses"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_explore"
+        android:textStyle="bold"
+        android:text="Ver todos" />
+
+    <View
+        android:id="@+id/view_background"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:background="@drawable/gradient"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_popular_courses"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/textview_android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="Desenvolvimento Android"
+        app:layout_constraintTop_toTopOf="@id/view_background"
+        app:layout_constraintBottom_toBottomOf="@id/view_background"
+        app:layout_constraintStart_toStartOf="@id/view_background"
+        android:layout_marginStart="16dp" />
+
+    <ImageView
+        android:id="@+id/image_android"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="@id/view_background"
+        app:layout_constraintTop_toTopOf="@id/view_background"
+        app:layout_constraintBottom_toBottomOf="@id/view_background"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_android"
+        app:tint="@color/white"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
