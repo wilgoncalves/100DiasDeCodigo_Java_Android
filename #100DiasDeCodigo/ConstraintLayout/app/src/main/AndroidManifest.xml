@@ -12,14 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ConstraintLayout">
         <activity
-            android:name=".ContentActivity"
-            android:exported="true" >
+            android:name=".CoffeeActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ContentActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity3"
             android:exported="false" />
@@ -28,8 +30,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
     </application>
 
 </manifest>
