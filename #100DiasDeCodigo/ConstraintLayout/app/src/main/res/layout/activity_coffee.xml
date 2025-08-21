@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:textSize="32sp"
+        android:textSize="34sp"
         android:text="Cappuccino"
         app:layout_constraintTop_toTopOf="@id/view_background"
         app:layout_constraintBottom_toBottomOf="@id/view_background"
@@ -68,8 +68,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/imageview_clock"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textview_likes"
+        app:layout_constraintStart_toStartOf="@id/imageview_clock"
+        app:layout_constraintEnd_toEndOf="@id/imageview_clock"
         android:text="15 minutos"
         android:textColor="@color/brown"
         android:layout_marginTop="8dp"
@@ -79,9 +79,9 @@
         android:id="@+id/textview_likes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/imageview_clock"
-        app:layout_constraintStart_toEndOf="@id/textview_clock"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageview_heart"
+        app:layout_constraintStart_toStartOf="@id/imageview_heart"
+        app:layout_constraintEnd_toEndOf="@id/imageview_heart"
         android:text="54214"
         android:textColor="@color/brown"
         android:layout_marginTop="8dp" />
@@ -94,8 +94,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@color/brown"/>
 
     <TextView
@@ -103,11 +103,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/brown"
-        android:layout_marginTop="16dp"
         android:textSize="16sp"
-        android:paddingStart="26dp"
-        android:paddingEnd="26dp"
-        android:textAlignment="center"
+        android:padding="16dp"
+        android:gravity="center"
         android:text="Uma simples e perfeitamente extraída dose de espresso misturado com leite fresco e chocolate fazem esta bebida deliciosa."
         app:layout_constraintTop_toBottomOf="@id/view_fineline"
         app:layout_constraintStart_toStartOf="parent"
@@ -119,48 +117,22 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/textview_description"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:textSize="28sp"
+        android:padding="16dp"
+        android:textSize="26sp"
         android:text="Ingredientes"
         android:textColor="@color/brown"
         android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imageview_arrow_forward1"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:src="@drawable/arrow_forward"
         android:contentDescription="Drawing of an arrow pointing forward"
         app:tint="@color/brown"
         app:layout_constraintTop_toBottomOf="@id/textview_ingredientes"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="24dp" />
-
-    <ImageView
-        android:id="@+id/imageview_arrow_forward2"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:src="@drawable/arrow_forward"
-        android:contentDescription="Drawing of an arrow pointing forward"
-        app:tint="@color/brown"
-        app:layout_constraintTop_toBottomOf="@id/imageview_arrow_forward1"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="24dp" />
-
-    <ImageView
-        android:id="@+id/imageview_arrow_forward3"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:src="@drawable/arrow_forward"
-        android:contentDescription="Drawing of an arrow pointing forward"
-        app:tint="@color/brown"
-        app:layout_constraintTop_toBottomOf="@id/imageview_arrow_forward2"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="24dp" />
+        android:layout_marginStart="16dp" />
 
     <TextView
         android:id="@+id/textview_lista1"
@@ -170,10 +142,21 @@
         android:textColor="@color/brown"
         android:textStyle="bold"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/textview_ingredientes"
+        app:layout_constraintTop_toTopOf="@id/imageview_arrow_forward1"
         app:layout_constraintStart_toEndOf="@id/imageview_arrow_forward1"
-        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/imageview_arrow_forward1"
         android:layout_marginStart="5dp" />
+
+    <ImageView
+        android:id="@+id/imageview_arrow_forward2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arrow_forward"
+        android:contentDescription="Drawing of an arrow pointing forward"
+        app:tint="@color/brown"
+        app:layout_constraintTop_toBottomOf="@id/imageview_arrow_forward1"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp" />
 
     <TextView
         android:id="@+id/textview_lista2"
@@ -183,10 +166,22 @@
         android:textColor="@color/brown"
         android:textStyle="bold"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/textview_lista1"
+        app:layout_constraintTop_toTopOf="@id/imageview_arrow_forward2"
         app:layout_constraintStart_toEndOf="@id/imageview_arrow_forward2"
+        app:layout_constraintBottom_toBottomOf="@id/imageview_arrow_forward2"
         android:layout_marginTop="10dp"
         android:layout_marginStart="5dp"/>
+
+    <ImageView
+        android:id="@+id/imageview_arrow_forward3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arrow_forward"
+        android:contentDescription="Drawing of an arrow pointing forward"
+        app:tint="@color/brown"
+        app:layout_constraintTop_toBottomOf="@id/imageview_arrow_forward2"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp" />
 
     <TextView
         android:id="@+id/textview_lista3"
@@ -196,8 +191,9 @@
         android:textColor="@color/brown"
         android:textStyle="bold"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/textview_lista2"
+        app:layout_constraintTop_toTopOf="@id/imageview_arrow_forward3"
         app:layout_constraintStart_toEndOf="@id/imageview_arrow_forward3"
+        app:layout_constraintBottom_toBottomOf="@id/imageview_arrow_forward3"
         android:layout_marginTop="10dp"
         android:layout_marginStart="5dp" />
 
