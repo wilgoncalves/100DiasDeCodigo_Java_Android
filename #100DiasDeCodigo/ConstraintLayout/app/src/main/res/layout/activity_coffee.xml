@@ -90,10 +90,10 @@
         android:id="@+id/view_fineline"
         android:layout_width="0dp"
         android:layout_height="2dp"
-        app:layout_constraintTop_toBottomOf="@id/textview_likes"
+        app:layout_constraintTop_toBottomOf="@id/textview_clock"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="@color/brown"/>
@@ -103,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/brown"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:padding="16dp"
         android:gravity="center"
         android:text="Uma simples e perfeitamente extraída dose de espresso misturado com leite fresco e chocolate fazem esta bebida deliciosa."
@@ -118,6 +118,7 @@
         app:layout_constraintTop_toBottomOf="@id/textview_description"
         app:layout_constraintStart_toStartOf="parent"
         android:padding="16dp"
+        android:gravity="center"
         android:textSize="26sp"
         android:text="Ingredientes"
         android:textColor="@color/brown"
@@ -144,8 +145,7 @@
         android:textSize="16sp"
         app:layout_constraintTop_toTopOf="@id/imageview_arrow_forward1"
         app:layout_constraintStart_toEndOf="@id/imageview_arrow_forward1"
-        app:layout_constraintBottom_toBottomOf="@id/imageview_arrow_forward1"
-        android:layout_marginStart="5dp" />
+        app:layout_constraintBottom_toBottomOf="@id/imageview_arrow_forward1" />
 
     <ImageView
         android:id="@+id/imageview_arrow_forward2"
@@ -156,7 +156,8 @@
         app:tint="@color/brown"
         app:layout_constraintTop_toBottomOf="@id/imageview_arrow_forward1"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="16dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp" />
 
     <TextView
         android:id="@+id/textview_lista2"
@@ -168,9 +169,7 @@
         android:textSize="16sp"
         app:layout_constraintTop_toTopOf="@id/imageview_arrow_forward2"
         app:layout_constraintStart_toEndOf="@id/imageview_arrow_forward2"
-        app:layout_constraintBottom_toBottomOf="@id/imageview_arrow_forward2"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="5dp"/>
+        app:layout_constraintBottom_toBottomOf="@id/imageview_arrow_forward2" />
 
     <ImageView
         android:id="@+id/imageview_arrow_forward3"
@@ -181,7 +180,8 @@
         app:tint="@color/brown"
         app:layout_constraintTop_toBottomOf="@id/imageview_arrow_forward2"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="16dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"/>
 
     <TextView
         android:id="@+id/textview_lista3"
@@ -193,8 +193,6 @@
         android:textSize="16sp"
         app:layout_constraintTop_toTopOf="@id/imageview_arrow_forward3"
         app:layout_constraintStart_toEndOf="@id/imageview_arrow_forward3"
-        app:layout_constraintBottom_toBottomOf="@id/imageview_arrow_forward3"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="5dp" />
+        app:layout_constraintBottom_toBottomOf="@id/imageview_arrow_forward3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
