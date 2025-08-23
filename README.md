@@ -79,3 +79,5 @@
 * 39 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/blob/main/%23100DiasDeCodigo/MVVM/app/src/main/res/layout/activity_main.xml"> Arquitetura MVVM (Model - View - ViewModel)</a>
 
 * 40 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/MVVM/app/src/main"> Aplicando a arquitetura MVVM</a>
+
+* 41 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/MVVM/app/src/main"> Arquitetura MVVM - Novos conceitos</a>
