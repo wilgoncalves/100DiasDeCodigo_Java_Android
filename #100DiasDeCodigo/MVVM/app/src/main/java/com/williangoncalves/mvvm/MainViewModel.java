@@ -1,14 +1,23 @@
 package com.williangoncalves.mvvm;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class MainViewModel extends ViewModel {
 
-    public String login(String name) {
+    // LiveData
+    private MutableLiveData<String> _login = new MutableLiveData<>();
+
+    public LiveData<String> loginMessage() {
+        return _login;
+    }
+
+    public void login(String name) {
         if (name.isEmpty()) {
-            return "Falha!";
+            _login.setValue("Falha!");
         } else {
-            return "Sucesso!";
+            _login.setValue("Sucesso!");
         }
     }
 }
