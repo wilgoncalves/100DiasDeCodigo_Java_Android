@@ -83,3 +83,5 @@
 * 41 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/MVVM/app/src/main"> Arquitetura MVVM - Novos conceitos</a>
 
 * 42 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/MyBooks"> Criação de aplicativo MyBooks</a>
+
+* 43 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/MyBooks"> Organizando arquivos do aplicativo MyBooks</a>
