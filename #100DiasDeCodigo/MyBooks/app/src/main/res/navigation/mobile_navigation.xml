@@ -14,6 +14,6 @@
     <fragment
         android:id="@+id/navigation_favorite"
         android:name="com.williangoncalves.mybooks.ui.FavoriteFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_favorites"
         tools:layout="@layout/fragment_favorite" />
 </navigation>
