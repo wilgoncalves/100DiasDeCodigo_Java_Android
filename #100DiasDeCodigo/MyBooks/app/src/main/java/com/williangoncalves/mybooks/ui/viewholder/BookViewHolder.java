@@ -20,8 +20,8 @@ public class BookViewHolder extends RecyclerView.ViewHolder {
         item.textviewTitle.setText(book.getTitle());
         item.textviewAuthor.setText(book.getAuthor());
         item.textviewGenre.setText(book.getGenre());
-
         updateFavoriteIcon(book);
+        setGenreBackgroundColor(book);
     }
 
     private void updateFavoriteIcon(BookEntity book) {
@@ -29,6 +29,16 @@ public class BookViewHolder extends RecyclerView.ViewHolder {
             item.imageviewFavorite.setImageResource(R.drawable.ic_favorite);
         } else {
             item.imageviewFavorite.setImageResource(R.drawable.ic_favorite_empty);
+        }
+    }
+
+    private void setGenreBackgroundColor(BookEntity book) {
+        if (book.getGenre().equals("Fantasia")) {
+            item.textviewGenre.setBackgroundResource(R.drawable.rounded_label_fantasy);
+        } else if (book.getGenre().equals("Terror")) {
+            item.textviewGenre.setBackgroundResource(R.drawable.rounded_label_red);
+        } else {
+            item.textviewGenre.setBackgroundResource(R.drawable.rounded_label_teal);
         }
     }
 }
