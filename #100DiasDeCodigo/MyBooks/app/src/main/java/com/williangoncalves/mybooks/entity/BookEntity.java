@@ -5,7 +5,7 @@ public class BookEntity {
     private final int id;
     private final String title;
     private final String author;
-    private final boolean favorite;
+    private boolean favorite;
     private final String genre;
 
     public BookEntity(int id, String title, String author, boolean favorite, String genre) {
@@ -29,11 +29,15 @@ public class BookEntity {
         return author;
     }
 
+    public String getGenre() {
+        return genre;
+    }
+
     public boolean isFavorite() {
         return favorite;
     }
 
-    public String getGenre() {
-        return genre;
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 }

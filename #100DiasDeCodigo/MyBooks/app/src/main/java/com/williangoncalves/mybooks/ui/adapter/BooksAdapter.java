@@ -40,6 +40,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BookViewHolder> {
 
     public void updateBooks(List<BookEntity> books) {
         booksList = books;
+        notifyDataSetChanged();
     }
 
     public void attachListener(BookListener bookListener) {

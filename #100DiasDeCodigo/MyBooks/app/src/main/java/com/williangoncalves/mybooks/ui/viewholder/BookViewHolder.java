@@ -13,7 +13,7 @@ import com.williangoncalves.mybooks.ui.listener.BookListener;
 public class BookViewHolder extends RecyclerView.ViewHolder {
 
     private final ItemBookBinding item;
-    private BookListener listener;
+    private final BookListener listener;
 
     public BookViewHolder(@NonNull ItemBookBinding itemView, BookListener bookListener) {
         super(itemView.getRoot());

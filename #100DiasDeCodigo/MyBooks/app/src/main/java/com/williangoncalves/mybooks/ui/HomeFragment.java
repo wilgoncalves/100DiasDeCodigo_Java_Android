@@ -9,10 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.williangoncalves.mybooks.R;
 import com.williangoncalves.mybooks.databinding.FragmentHomeBinding;
 import com.williangoncalves.mybooks.entity.BookEntity;
+import com.williangoncalves.mybooks.helper.BookConstants;
 import com.williangoncalves.mybooks.ui.adapter.BooksAdapter;
 import com.williangoncalves.mybooks.ui.listener.BookListener;
 import com.williangoncalves.mybooks.viewmodel.HomeViewModel;
@@ -23,7 +26,7 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private HomeViewModel viewModel;
-    private BooksAdapter adapter = new BooksAdapter();
+    private final BooksAdapter adapter = new BooksAdapter();
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle b) {
 
@@ -38,6 +41,7 @@ public class HomeFragment extends Fragment {
         binding.recyclerviewBooks.setAdapter(adapter);
 
         setObservers();
+        attachListener();
 
         return binding.getRoot();
     }
@@ -62,12 +66,16 @@ public class HomeFragment extends Fragment {
         BookListener listener = new BookListener() {
             @Override
             public void onClick(int id) {
+                Bundle bundle = new Bundle();
+                bundle.putInt(BookConstants.BOOK_ID, id);
 
+                NavHostFragment.findNavController(HomeFragment.this)
+                        .navigate(R.id.navigation_details, bundle);
             }
 
             @Override
             public void onFavoriteClick(int id) {
-
+                viewModel.toggleFavoriteStatus(id);
             }
         };
 
