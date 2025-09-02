@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.williangoncalves.mybooks.databinding.FragmentHomeBinding;
 import com.williangoncalves.mybooks.entity.BookEntity;
 import com.williangoncalves.mybooks.ui.adapter.BooksAdapter;
+import com.williangoncalves.mybooks.ui.listener.BookListener;
 import com.williangoncalves.mybooks.viewmodel.HomeViewModel;
 
 import java.util.List;
@@ -24,8 +25,7 @@ public class HomeFragment extends Fragment {
     private HomeViewModel viewModel;
     private BooksAdapter adapter = new BooksAdapter();
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle b) {
 
         viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         binding = FragmentHomeBinding.inflate(inflater, container, false);
@@ -56,5 +56,21 @@ public class HomeFragment extends Fragment {
                 adapter.updateBooks(bookEntities);
             }
         });
+    }
+
+    private void attachListener() {
+        BookListener listener = new BookListener() {
+            @Override
+            public void onClick(int id) {
+
+            }
+
+            @Override
+            public void onFavoriteClick(int id) {
+
+            }
+        };
+
+        adapter.attachListener(listener);
     }
 }

@@ -1,19 +1,24 @@
 package com.williangoncalves.mybooks.ui.viewholder;
 
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.williangoncalves.mybooks.R;
 import com.williangoncalves.mybooks.databinding.ItemBookBinding;
 import com.williangoncalves.mybooks.entity.BookEntity;
+import com.williangoncalves.mybooks.ui.listener.BookListener;
 
 public class BookViewHolder extends RecyclerView.ViewHolder {
 
     private final ItemBookBinding item;
+    private BookListener listener;
 
-    public BookViewHolder(@NonNull ItemBookBinding itemView) {
+    public BookViewHolder(@NonNull ItemBookBinding itemView, BookListener bookListener) {
         super(itemView.getRoot());
         item = itemView;
+        listener = bookListener;
     }
 
     public void bind(BookEntity book) {
@@ -22,6 +27,10 @@ public class BookViewHolder extends RecyclerView.ViewHolder {
         item.textviewGenre.setText(book.getGenre());
         updateFavoriteIcon(book);
         setGenreBackgroundColor(book);
+
+        item.textviewTitle.setOnClickListener(v -> listener.onClick(book.getId()));
+        item.textviewAuthor.setOnClickListener(v -> listener.onClick(book.getId()));
+        item.imageviewFavorite.setOnClickListener(v -> listener.onFavoriteClick(book.getId()));
     }
 
     private void updateFavoriteIcon(BookEntity book) {
