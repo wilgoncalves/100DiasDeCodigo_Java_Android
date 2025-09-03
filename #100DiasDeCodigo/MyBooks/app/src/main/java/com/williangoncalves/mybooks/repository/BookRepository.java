@@ -53,6 +53,16 @@ public class BookRepository {
         return books;
     }
 
+    public List<BookEntity> getFavoriteBooks() {
+        List<BookEntity> favorites = new ArrayList<>();
+        for (BookEntity book : books) {
+            if (book.isFavorite()) {
+                favorites.add(book);
+            }
+        }
+        return favorites;
+    }
+
     public BookEntity getBookById(int id) {
         BookEntity book = null;
 

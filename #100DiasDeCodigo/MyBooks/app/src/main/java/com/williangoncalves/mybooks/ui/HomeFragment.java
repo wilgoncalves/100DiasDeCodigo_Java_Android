@@ -33,8 +33,6 @@ public class HomeFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         binding = FragmentHomeBinding.inflate(inflater, container, false);
 
-        viewModel.getBooks();
-
         // Layout:
         binding.recyclerviewBooks.setLayoutManager(new LinearLayoutManager(getContext()));
         // Adapter:
@@ -44,6 +42,12 @@ public class HomeFragment extends Fragment {
         attachListener();
 
         return binding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        viewModel.getBooks();
     }
 
     @Override
