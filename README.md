@@ -95,3 +95,5 @@
 * 47 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/MyBooks"> App MyBooks- Configurando detalhes da listagem de livros</a>
 
 * 48 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/MyBooks"> App MyBooks- Configurando remoção de livros e tratando lista vazia</a>
+
+* 49 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/MyBooks"> App MyBooks- Criando banco de dados</a>
