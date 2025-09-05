@@ -1,11 +1,26 @@
 package com.williangoncalves.mybooks.entity;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "Book")
 public class BookEntity {
 
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
     private final int id;
+
+    @ColumnInfo(name = "title")
     private final String title;
+
+    @ColumnInfo(name = "author")
     private final String author;
+
+    @ColumnInfo(name = "favorite")
     private boolean favorite;
+
+    @ColumnInfo(name = "genre")
     private final String genre;
 
     public BookEntity(int id, String title, String author, boolean favorite, String genre) {

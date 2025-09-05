@@ -1,22 +1,18 @@
 package com.williangoncalves.mybooks.repository;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
 import com.williangoncalves.mybooks.entity.BookEntity;
-import com.williangoncalves.mybooks.helper.DataBaseConstants;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookRepository {
 
-    private final BookDataBaseHelper dataBase;
+    private final BookDAO dataBase;
 
     private BookRepository(Context context) {
-        dataBase = new BookDataBaseHelper(context);
+        dataBase = BookDataBase.getInstance(context).bookDAO();
     }
 
     private static BookRepository instance;
@@ -30,113 +26,55 @@ public class BookRepository {
         return instance;
     }
 
-    public List<BookEntity> getBooks() {
-        List<BookEntity> list = new ArrayList<>();
-        SQLiteDatabase db = dataBase.getReadableDatabase();
-
-        Cursor cursor = db.query(DataBaseConstants.BOOK.TABLE_NAME,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                int id = cursor.getInt(cursor.getColumnIndexOrThrow(DataBaseConstants.BOOK.COLUMNS.ID));
-                String title = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseConstants.BOOK.COLUMNS.TITLE));
-                String author = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseConstants.BOOK.COLUMNS.AUTHOR));
-                String genre = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseConstants.BOOK.COLUMNS.GENRE));
-                boolean favorite = cursor.getInt(cursor.getColumnIndexOrThrow(DataBaseConstants.BOOK.COLUMNS.FAVORITE)) == 1;
-
-                list.add(new BookEntity(id, title, author, favorite, genre));
-            } while (cursor.moveToNext());
-        }
-
-        cursor.close();
-        db.close();
-
-        return list;
+    public List<BookEntity> getAllBooks() {
+        return dataBase.getAllBooks();
     }
 
     public List<BookEntity> getFavoriteBooks() {
-        List<BookEntity> list = new ArrayList<>();
-        SQLiteDatabase db = dataBase.getReadableDatabase();
-
-        Cursor cursor = db.query(DataBaseConstants.BOOK.TABLE_NAME,
-                null,
-                DataBaseConstants.BOOK.COLUMNS.FAVORITE + " = ? ",
-                new String[]{"1"},
-                null,
-                null,
-                null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                int id = cursor.getInt(cursor.getColumnIndexOrThrow(DataBaseConstants.BOOK.COLUMNS.ID));
-                String title = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseConstants.BOOK.COLUMNS.TITLE));
-                String author = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseConstants.BOOK.COLUMNS.AUTHOR));
-                String genre = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseConstants.BOOK.COLUMNS.GENRE));
-                boolean favorite = cursor.getInt(cursor.getColumnIndexOrThrow(DataBaseConstants.BOOK.COLUMNS.FAVORITE)) == 1;
-
-                list.add(new BookEntity(id, title, author, favorite, genre));
-            } while (cursor.moveToNext());
-        }
-
-        cursor.close();
-        db.close();
-
-        return list;
+       return dataBase.getFavoriteBooks();
     }
 
     public BookEntity getBookById(int id) {
-        BookEntity book = null;
-        SQLiteDatabase db = dataBase.getReadableDatabase();
-
-        Cursor cursor = db.query(DataBaseConstants.BOOK.TABLE_NAME,
-                null,
-                DataBaseConstants.BOOK.COLUMNS.ID + " = ? ",
-                new String[]{String.valueOf(id)},
-                null,
-                null,
-                null);
-
-        if (cursor.moveToFirst()) {
-            String title = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseConstants.BOOK.COLUMNS.TITLE));
-            String author = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseConstants.BOOK.COLUMNS.AUTHOR));
-            String genre = cursor.getString(cursor.getColumnIndexOrThrow(DataBaseConstants.BOOK.COLUMNS.GENRE));
-            boolean favorite = cursor.getInt(cursor.getColumnIndexOrThrow(DataBaseConstants.BOOK.COLUMNS.FAVORITE)) == 1;
-
-            book = new BookEntity(id, title, author, favorite, genre);
-        }
-
-        cursor.close();
-        db.close();
-
-        return book;
+        return dataBase.getBookById(id);
     }
 
     public void toggleFavoriteStatus(int id) {
         BookEntity book = getBookById(id);
-        SQLiteDatabase db = dataBase.getWritableDatabase();
-
-        int newFavoriteStatus = book.isFavorite() ? 0 : 1;
-        ContentValues values = new ContentValues();
-        values.put(DataBaseConstants.BOOK.COLUMNS.FAVORITE, newFavoriteStatus);
-
-        db.update(DataBaseConstants.BOOK.TABLE_NAME,
-                values,
-                DataBaseConstants.BOOK.COLUMNS.ID + " = ? ",
-                new String[]{String.valueOf(id)});
+        book.setFavorite(!book.isFavorite());
+        dataBase.update(book);
     }
 
     public boolean delete(int id) {
-        SQLiteDatabase db = dataBase.getWritableDatabase();
-        int rowsDeleted = db.delete(DataBaseConstants.BOOK.TABLE_NAME,
-                DataBaseConstants.BOOK.COLUMNS.ID + " = ? ",
-                new String[]{String.valueOf(id)});
+        return dataBase.delete(getBookById(id)) > 0;
+    }
 
-        return rowsDeleted > 0;
+    public void loadInitialBooks() {
+        dataBase.create(getInitialBooks());
+    }
+
+    private List<BookEntity> getInitialBooks() {
+        List<BookEntity> initialBooks = new ArrayList<>();
+        initialBooks.add(new BookEntity(1, "To Kill a Mockingbird", "Harper Lee", true, "Ficção"));
+        initialBooks.add(new BookEntity(2, "Dom Casmurro", "Machado de Assis", false, "Romance"));
+        initialBooks.add(new BookEntity(3, "O Hobbit", "J.R.R. Tolkien", true, "Fantasia"));
+        initialBooks.add(new BookEntity(4, "Cem Anos de Solidão", "Gabriel García Márquez", false, "Romance"));
+        initialBooks.add(new BookEntity(5, "O Pequeno Príncipe", "Antoine de Saint-Exupéry", false, "Fantasia"));
+        initialBooks.add(new BookEntity(6, "Crime e Castigo", "Fiódor Dostoiévski", false, "Ficção policial"));
+        initialBooks.add(new BookEntity(7, "Frankenstein", "Mary Shelley", false, "Terror"));
+        initialBooks.add(new BookEntity(8, "Harry Potter e a Pedra Filosofal", "J.K. Rowling", false, "Fantasia"));
+        initialBooks.add(new BookEntity(9, "Neuromancer", "William Gibson", false, "Cyberpunk"));
+        initialBooks.add(new BookEntity(10, "Senhor dos Anéis", "J.R.R. Tolkien", false, "Fantasia"));
+        initialBooks.add(new BookEntity(11, "Drácula", "Bram Stoker", false, "Terror"));
+        initialBooks.add(new BookEntity(12, "Orgulho e Preconceito", "Jane Austen", false, "Romance"));
+        initialBooks.add(new BookEntity(13, "Harry Potter e a Câmara Secreta", "J.K. Rowling", false, "Fantasia"));
+        initialBooks.add(new BookEntity(14, "As Crônicas de Nárnia", "C.S. Lewis", false, "Fantasia"));
+        initialBooks.add(new BookEntity(15, "O Código Da Vinci", "Dan Brown", false, "Mistério"));
+        initialBooks.add(new BookEntity(16, "It: A Coisa", "Stephen King", false, "Terror"));
+        initialBooks.add(new BookEntity(17, "Moby Dick", "Herman Melville", true, "Aventura"));
+        initialBooks.add(new BookEntity(18, "O Nome do Vento", "Patrick Rothfuss", true, "Fantasia"));
+        initialBooks.add(new BookEntity(19, "O Conde de Monte Cristo", "Alexandre Dumas", true, "Aventura"));
+        initialBooks.add(new BookEntity(20, "Os Miseráveis", "Victor Hugo", false, "Romance"));
+
+        return initialBooks;
     }
 }

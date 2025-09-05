@@ -20,10 +20,14 @@ public class HomeViewModel extends AndroidViewModel {
 
     public HomeViewModel(@NonNull Application application) {
         super(application);
+
+        if (bookRepository.getAllBooks().isEmpty()) {
+            bookRepository.loadInitialBooks();
+        }
     }
 
     public void getBooks() {
-        _books.setValue(bookRepository.getBooks());
+        _books.setValue(bookRepository.getAllBooks());
     }
 
     public void toggleFavoriteStatus(int id) {
