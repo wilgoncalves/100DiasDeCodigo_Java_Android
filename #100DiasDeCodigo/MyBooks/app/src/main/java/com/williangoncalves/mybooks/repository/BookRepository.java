@@ -2,10 +2,12 @@ package com.williangoncalves.mybooks.repository;
 
 import android.content.Context;
 
+import com.williangoncalves.mybooks.callback.Callback;
 import com.williangoncalves.mybooks.entity.BookEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
 
 public class BookRepository {
 
@@ -26,30 +28,64 @@ public class BookRepository {
         return instance;
     }
 
-    public List<BookEntity> getAllBooks() {
-        return dataBase.getAllBooks();
+    public void getAllBooks(Callback<List<BookEntity>> callback) {
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                List<BookEntity> list = dataBase.getAllBooks();
+                callback.onSuccess(list);
+            }
+        });
     }
 
-    public List<BookEntity> getFavoriteBooks() {
-       return dataBase.getFavoriteBooks();
+    public void getFavoriteBooks(Callback<List<BookEntity>> callback) {
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                callback.onSuccess(dataBase.getFavoriteBooks());
+            }
+        });
     }
 
-    public BookEntity getBookById(int id) {
-        return dataBase.getBookById(id);
+    public void getBookById(int id, Callback<BookEntity> callback) {
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                callback.onSuccess(dataBase.getBookById(id));
+            }
+        });
     }
 
-    public void toggleFavoriteStatus(int id) {
-        BookEntity book = getBookById(id);
-        book.setFavorite(!book.isFavorite());
-        dataBase.update(book);
+    public void toggleFavoriteStatus(int id, Callback<Void> callback) {
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                BookEntity book = dataBase.getBookById(id);
+                book.setFavorite(!book.isFavorite());
+                dataBase.update(book);
+
+                callback.onSuccess(null);
+            }
+        });
     }
 
-    public boolean delete(int id) {
-        return dataBase.delete(getBookById(id)) > 0;
+    public void delete(int id, Callback<Boolean> callback) {
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                BookEntity book = dataBase.getBookById(id);
+                callback.onSuccess(dataBase.delete(book) > 0);
+            }
+        });
     }
 
     public void loadInitialBooks() {
-        dataBase.create(getInitialBooks());
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                dataBase.create(getInitialBooks());
+            }
+        });
     }
 
     private List<BookEntity> getInitialBooks() {

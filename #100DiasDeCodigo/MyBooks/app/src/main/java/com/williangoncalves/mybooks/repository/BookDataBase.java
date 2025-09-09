@@ -26,7 +26,6 @@ public abstract class BookDataBase extends RoomDatabase {
                 instance= Room.databaseBuilder(context, BookDataBase.class, NAME)
                         .addCallback(MyBooksDBCallBack.creation)
                         .addMigrations(Migrations.migrationFromV1ToV2)
-                        .allowMainThreadQueries()
                         .build();
             }
         }

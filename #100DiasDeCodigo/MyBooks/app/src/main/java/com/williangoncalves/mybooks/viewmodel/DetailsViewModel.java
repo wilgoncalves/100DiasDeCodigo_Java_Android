@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.williangoncalves.mybooks.callback.Callback;
 import com.williangoncalves.mybooks.entity.BookEntity;
 import com.williangoncalves.mybooks.repository.BookRepository;
 
@@ -24,14 +25,28 @@ public class DetailsViewModel extends AndroidViewModel {
     }
 
     public void getBookById(int id) {
-        _book.setValue(bookRepository.getBookById(id));
+        bookRepository.getBookById(id, new Callback<BookEntity>() {
+            @Override
+            public void onSuccess(BookEntity result) {
+                _book.postValue(result);
+            }
+        });
     }
 
     public void toggleFavoriteStatus(int id) {
-        bookRepository.toggleFavoriteStatus(id);
+        bookRepository.toggleFavoriteStatus(id, new Callback<Void>() {
+            @Override
+            public void onSuccess(Void result) {
+            }
+        });
     }
 
     public void delete(int id) {
-        _bookDeleted.setValue(bookRepository.delete(id));
+        bookRepository.delete(id, new Callback<Boolean>() {
+            @Override
+            public void onSuccess(Boolean result) {
+                _bookDeleted.postValue(result);
+            }
+        });
     }
 }
