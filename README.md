@@ -102,4 +102,6 @@
 
 * 51 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/MyBooks"> App MyBooks - Room assíncrono: Implementando callback</a>
 
-* 52 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/RetrofitExemplo/app/src/main"> Retrofit - biblioteca de chamadas à API</a>
+* 52 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/RetrofitExemplo/app/src/main"> Retrofit - Biblioteca de chamadas à API</a>
+
+* 53 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/AppTasks/Template"> Criação de app Tasks e configuração de Retrofit</a>
