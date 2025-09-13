@@ -107,3 +107,5 @@
 * 53 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/AppTasks/Template"> Criação de app Tasks e configuração de Retrofit</a>
 
 * 54 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/AppTasks/Template"> App Tasks - Configurando tela de registro</a>
+
+* 55 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/AppTasks/Template"> App Tasks - Cadastrando usuários</a>
