@@ -28,7 +28,7 @@ public class PersonRepository {
 
             @Override
             public void onFailure(Call<PersonModel> call, Throwable t) {
-
+                String s = "";
             }
         });
     }
