@@ -9,10 +9,11 @@ import com.devmasterteam.tasks.service.repository.PersonRepository;
 
 public class RegisterViewModel extends AndroidViewModel {
 
-    private PersonRepository personRepository = new PersonRepository();
+    private final PersonRepository personRepository;
 
     public RegisterViewModel(@NonNull Application application) {
         super(application);
+        this.personRepository = new PersonRepository(application);
     }
 
     public void create(String name, String email, String password) {

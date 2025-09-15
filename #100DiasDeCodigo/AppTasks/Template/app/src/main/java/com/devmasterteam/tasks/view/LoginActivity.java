@@ -3,16 +3,19 @@ package com.devmasterteam.tasks.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.devmasterteam.tasks.R;
 import com.devmasterteam.tasks.databinding.ActivityLoginBinding;
+import com.devmasterteam.tasks.service.listener.Feedback;
 import com.devmasterteam.tasks.viewmodel.LoginViewModel;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -71,6 +74,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void loadObservers() {
-
+        this.loginViewModel.login.observe(this, new Observer<Feedback>() {
+            @Override
+            public void onChanged(Feedback feedback) {
+                if (feedback.isSuccess()) {
+                    Toast.makeText(getApplicationContext(), "SUCESSO!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), feedback.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
