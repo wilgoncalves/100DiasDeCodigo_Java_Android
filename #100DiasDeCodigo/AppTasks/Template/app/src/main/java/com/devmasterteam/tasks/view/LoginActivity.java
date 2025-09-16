@@ -52,6 +52,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         // Cria observadores
         loadObservers();
+
+        this.verifyUserLogged();
     }
 
     @Override
@@ -68,6 +70,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    public void verifyUserLogged() {
+        this.loginViewModel.verifyUserLogged();
+    }
+
     private void setListeners() {
         binding.buttonLogin.setOnClickListener(this);
         binding.textRegister.setOnClickListener(this);
@@ -81,6 +87,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(getApplicationContext(), "SUCESSO!", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(), feedback.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        this.loginViewModel.userLogged.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean logged) {
+                if (logged) {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
         });

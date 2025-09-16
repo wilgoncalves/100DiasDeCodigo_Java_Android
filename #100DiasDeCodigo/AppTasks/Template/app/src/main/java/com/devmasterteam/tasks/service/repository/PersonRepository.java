@@ -6,6 +6,7 @@ import com.devmasterteam.tasks.R;
 import com.devmasterteam.tasks.service.constants.TaskConstants;
 import com.devmasterteam.tasks.service.listener.APIListener;
 import com.devmasterteam.tasks.service.model.PersonModel;
+import com.devmasterteam.tasks.service.repository.local.SecurityPreferences;
 import com.devmasterteam.tasks.service.repository.remote.PersonService;
 import com.devmasterteam.tasks.service.repository.remote.RetrofitClient;
 import com.google.gson.Gson;
@@ -19,10 +20,12 @@ import retrofit2.Response;
 public class PersonRepository {
 
     private PersonService personService;
+    private SecurityPreferences securityPreferences;
     private Context context;
 
     public PersonRepository(Context context) {
         this.personService = RetrofitClient.createService(PersonService.class);
+        this.securityPreferences = new SecurityPreferences(context);
         this.context = context;
     }
 
@@ -66,5 +69,20 @@ public class PersonRepository {
                 listener.onFailure(context.getString(R.string.error_unexpected));
             }
         });
+    }
+
+    public void saveUserData(PersonModel model) {
+        this.securityPreferences.storeString(TaskConstants.SHARED.TOKEN_KEY, model.getToken());
+        this.securityPreferences.storeString(TaskConstants.SHARED.PERSON_KEY, model.getPersonKey());
+        this.securityPreferences.storeString(TaskConstants.SHARED.PERSON_NAME, model.getName());
+    }
+
+    public PersonModel getUserData() {
+        PersonModel model = new PersonModel();
+        model.setName(this.securityPreferences.getStoredString(TaskConstants.SHARED.PERSON_NAME));
+        model.setToken(this.securityPreferences.getStoredString(TaskConstants.SHARED.TOKEN_KEY));
+        model.setPersonKey(this.securityPreferences.getStoredString(TaskConstants.SHARED.PERSON_KEY));
+
+        return model;
     }
 }
