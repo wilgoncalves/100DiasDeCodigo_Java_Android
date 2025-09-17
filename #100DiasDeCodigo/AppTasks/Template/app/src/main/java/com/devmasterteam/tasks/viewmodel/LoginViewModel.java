@@ -30,7 +30,7 @@ public class LoginViewModel extends AndroidViewModel {
     public LoginViewModel(@NonNull Application application) {
         super(application);
         this.personRepository = new PersonRepository(application);
-        this.priorityRepository = new PriorityRepository();
+        this.priorityRepository = new PriorityRepository(application);
     }
 
     public void login(final String email, String password) {
@@ -52,13 +52,14 @@ public class LoginViewModel extends AndroidViewModel {
 
     public void verifyUserLogged() {
         PersonModel model = this.personRepository.getUserData();
-
         boolean logged = !"".equals(model.getName());
+
+        // Usuário não logado
         if (!logged) {
             this.priorityRepository.all(new APIListener<List<PriorityModel>>() {
                 @Override
                 public void onSuccess(List<PriorityModel> result) {
-                    String s = "";
+                    priorityRepository.save(result);
                 }
 
                 @Override

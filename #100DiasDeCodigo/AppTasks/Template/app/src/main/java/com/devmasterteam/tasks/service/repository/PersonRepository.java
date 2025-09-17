@@ -17,31 +17,33 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PersonRepository {
+public class PersonRepository extends BaseRepository {
 
     private PersonService personService;
     private SecurityPreferences securityPreferences;
-    private Context context;
 
     public PersonRepository(Context context) {
+        super(context);
         this.personService = RetrofitClient.createService(PersonService.class);
         this.securityPreferences = new SecurityPreferences(context);
         this.context = context;
     }
 
-    public void create(String name, String email, String password){
+    public void create(String name, String email, String password, final APIListener<PersonModel> listener){
         Call<PersonModel> call = this.personService.create(name, email, password, true);
         call.enqueue(new Callback<PersonModel>() {
             @Override
             public void onResponse(Call<PersonModel> call, Response<PersonModel> response) {
-                PersonModel personModel = response.body();
-                int code = response.code();
-                String s = "";
+                if (response.code() == TaskConstants.HTTP.SUCCESS) {
+                    listener.onSuccess(response.body());
+                } else {
+                    listener.onFailure(handleFailure(response.errorBody()));
+                }
             }
 
             @Override
             public void onFailure(Call<PersonModel> call, Throwable t) {
-                String s = "";
+                listener.onFailure(context.getString(R.string.error_unexpected));
             }
         });
     }
@@ -54,13 +56,7 @@ public class PersonRepository {
                 if (response.code() == TaskConstants.HTTP.SUCCESS) {
                     listener.onSuccess(response.body());
                 } else {
-                    try {
-                        String json = response.errorBody().string();
-                        String str = new Gson().fromJson(json, String.class);
-                        listener.onFailure(str);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    listener.onFailure(handleFailure(response.errorBody()));
                 }
             }
 

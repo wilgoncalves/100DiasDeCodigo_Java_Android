@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 import com.devmasterteam.tasks.service.model.PriorityModel;
 
-// @Database(entities = {PriorityModel.class}, version = 1)
+@Database(entities = {PriorityModel.class}, version = 1)
 public abstract class TaskDatabase extends RoomDatabase {
 
     // DAO
@@ -19,6 +19,7 @@ public abstract class TaskDatabase extends RoomDatabase {
         TaskDatabase INSTANCE;
         synchronized (TaskDatabase.class) {
             INSTANCE = Room.databaseBuilder(context, TaskDatabase.class, "taskDB")
+                    .allowMainThreadQueries()
                     .build();
         }
         return INSTANCE;
