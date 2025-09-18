@@ -33,6 +33,11 @@ public class TaskActivity extends AppCompatActivity implements View.OnClickListe
         binding = ActivityTaskBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // Botão voltar nativo
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left + binding.getRoot().getPaddingStart(),
@@ -60,6 +65,7 @@ public class TaskActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         int id = v.getId();
+
         if (id == R.id.button_date) {
             showDatePicker();
         } else if (id == R.id.button_save) {
@@ -70,7 +76,7 @@ public class TaskActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            finish();
+            getOnBackPressedDispatcher().onBackPressed();
         }
         return super.onOptionsItemSelected(item);
     }

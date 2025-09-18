@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.devmasterteam.tasks.R;
 import com.devmasterteam.tasks.databinding.ActivityRegisterBinding;
+import com.devmasterteam.tasks.service.listener.Feedback;
 import com.devmasterteam.tasks.viewmodel.RegisterViewModel;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -78,5 +79,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void loadObservers() {
+        this.registerViewModel.create.observe(this, new Observer<Feedback>() {
+            @Override
+            public void onChanged(Feedback feedback) {
+                if (feedback.isSuccess()) {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), feedback.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

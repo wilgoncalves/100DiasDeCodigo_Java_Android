@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onChanged(Feedback feedback) {
                 if (feedback.isSuccess()) {
-                    Toast.makeText(getApplicationContext(), "SUCESSO!", Toast.LENGTH_SHORT).show();
+                    startMain();
                 } else {
                     Toast.makeText(getApplicationContext(), feedback.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -95,11 +95,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onChanged(Boolean logged) {
                 if (logged) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                    finish();
+                    startMain();
                 }
             }
         });
+    }
+
+    private void startMain() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
