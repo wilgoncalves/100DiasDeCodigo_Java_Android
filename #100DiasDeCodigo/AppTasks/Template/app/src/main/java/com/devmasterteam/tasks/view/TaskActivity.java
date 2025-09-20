@@ -1,8 +1,10 @@
 package com.devmasterteam.tasks.view;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.MenuItem;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -19,8 +21,13 @@ import com.devmasterteam.tasks.viewmodel.TaskViewModel;
 import com.devmasterteam.tasks.service.constants.TaskConstants;
 import com.devmasterteam.tasks.service.model.TaskModel;
 
-public class TaskActivity extends AppCompatActivity implements View.OnClickListener {
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
+public class TaskActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
+
+    private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
     private TaskViewModel viewModel;
     private int taskId = 0;
     private ActivityTaskBinding binding;
@@ -67,10 +74,19 @@ public class TaskActivity extends AppCompatActivity implements View.OnClickListe
         int id = v.getId();
 
         if (id == R.id.button_date) {
-            showDatePicker();
+            this.showDatePicker();
         } else if (id == R.id.button_save) {
             handleSave();
         }
+    }
+
+    @Override
+    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, dayOfMonth);
+
+        String date = this.format.format(calendar.getTime());
+        this.binding.buttonDate.setText(date);
     }
 
     @Override
@@ -92,12 +108,16 @@ public class TaskActivity extends AppCompatActivity implements View.OnClickListe
 
     private void handleSave() {
         TaskModel task = new TaskModel();
-
         viewModel.save(task);
     }
 
     private void showDatePicker() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
 
+        new DatePickerDialog(this, this, year, month, day).show();
     }
 
     /**
