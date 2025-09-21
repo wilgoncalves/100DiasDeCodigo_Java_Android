@@ -119,3 +119,5 @@
 * 59 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/AppTasks/Template"> App Tasks - Criando layout para tela de cadastro de tarefas</a>
 
 * 60 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/AppTasks/Template"> App Tasks - Cadastro de tarefas com DatePicker</a>
+
+* 61 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/AppTasks/Template"> App Tasks - Criando spinner, obtendo headers e valores das tarefas</a>
