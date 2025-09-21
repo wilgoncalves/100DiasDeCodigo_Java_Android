@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
@@ -13,22 +14,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.devmasterteam.tasks.R;
 import com.devmasterteam.tasks.databinding.ActivityTaskBinding;
+import com.devmasterteam.tasks.service.listener.Feedback;
+import com.devmasterteam.tasks.service.model.PriorityModel;
 import com.devmasterteam.tasks.viewmodel.TaskViewModel;
 import com.devmasterteam.tasks.service.constants.TaskConstants;
 import com.devmasterteam.tasks.service.model.TaskModel;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class TaskActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
     private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
     private TaskViewModel viewModel;
+    private List<Integer> listPriorityId = new ArrayList<>();
     private int taskId = 0;
     private ActivityTaskBinding binding;
 
@@ -76,7 +83,7 @@ public class TaskActivity extends AppCompatActivity implements View.OnClickListe
         if (id == R.id.button_date) {
             this.showDatePicker();
         } else if (id == R.id.button_save) {
-            handleSave();
+            this.handleSave();
         }
     }
 
@@ -108,6 +115,7 @@ public class TaskActivity extends AppCompatActivity implements View.OnClickListe
 
     private void handleSave() {
         TaskModel task = new TaskModel();
+        task.setPriorityId(this.listPriorityId.get(this.binding.spinnerPriority.getSelectedItemPosition()));
         viewModel.save(task);
     }
 
@@ -124,7 +132,32 @@ public class TaskActivity extends AppCompatActivity implements View.OnClickListe
      * Observadores
      */
     private void loadObservers() {
+        this.viewModel.listPriority.observe(this, new Observer<List<PriorityModel>>() {
+            @Override
+            public void onChanged(List<PriorityModel> list) {
+                loadSpinner(list);
+            }
+        });
 
+        this.viewModel.taskSave.observe(this, new Observer<Feedback>() {
+            @Override
+            public void onChanged(Feedback feedback) {
+                String s = "";
+            }
+        });
+    }
+
+    private void loadSpinner(List<PriorityModel> list) {
+
+        List<String> listPriorities = new ArrayList<>();
+        for (PriorityModel p : list) {
+            listPriorities.add(p.getDescription());
+            this.listPriorityId.add(p.getId());
+        }
+
+        ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(),
+                android.R.layout.simple_spinner_dropdown_item, listPriorities);
+        this.binding.spinnerPriority.setAdapter(adapter);
     }
 
     private void createEvents() {

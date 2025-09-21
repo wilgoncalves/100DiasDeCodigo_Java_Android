@@ -71,6 +71,8 @@ public class PersonRepository extends BaseRepository {
         this.securityPreferences.storeString(TaskConstants.SHARED.TOKEN_KEY, model.getToken());
         this.securityPreferences.storeString(TaskConstants.SHARED.PERSON_KEY, model.getPersonKey());
         this.securityPreferences.storeString(TaskConstants.SHARED.PERSON_NAME, model.getName());
+
+        RetrofitClient.saveHeaders(model.getToken(), model.getPersonKey());
     }
 
     public PersonModel getUserData() {
