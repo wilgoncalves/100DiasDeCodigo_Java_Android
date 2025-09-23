@@ -115,6 +115,12 @@ public class TaskActivity extends AppCompatActivity implements View.OnClickListe
 
     private void handleSave() {
         TaskModel task = new TaskModel();
+
+        // Testando:
+        task.setDescription(this.binding.editDescription.getText().toString());
+        task.setComplete(this.binding.checkComplete.isChecked());
+        task.setDueDate(this.binding.buttonDate.getText().toString());
+        //
         task.setPriorityId(this.listPriorityId.get(this.binding.spinnerPriority.getSelectedItemPosition()));
         viewModel.save(task);
     }

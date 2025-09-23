@@ -5,7 +5,6 @@ import android.content.Context;
 import com.devmasterteam.tasks.R;
 import com.devmasterteam.tasks.service.constants.TaskConstants;
 import com.devmasterteam.tasks.service.listener.APIListener;
-import com.devmasterteam.tasks.service.model.PersonModel;
 import com.devmasterteam.tasks.service.model.TaskModel;
 import com.devmasterteam.tasks.service.repository.remote.RetrofitClient;
 import com.devmasterteam.tasks.service.repository.remote.TaskService;
