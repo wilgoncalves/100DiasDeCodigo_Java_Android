@@ -7,22 +7,41 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.devmasterteam.tasks.service.listener.APIListener;
+import com.devmasterteam.tasks.service.listener.Feedback;
 import com.devmasterteam.tasks.service.model.TaskModel;
+import com.devmasterteam.tasks.service.repository.TaskRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskListViewModel extends AndroidViewModel {
 
-    private int filter = 0;
+    private TaskRepository taskRepository;
 
     private final MutableLiveData<List<TaskModel>> _list = new MutableLiveData<>();
     public LiveData<List<TaskModel>> list = _list;
 
+    private final MutableLiveData<Feedback> _feedback = new MutableLiveData<>();
+    public LiveData<Feedback> feedback = _feedback;
+
     public TaskListViewModel(@NonNull Application application) {
         super(application);
+        this.taskRepository = new TaskRepository(application);
     }
 
-    public void list(int filter) {
-        this.filter = filter;
+    public void list() {
+        this.taskRepository.all(new APIListener<List<TaskModel>>() {
+            @Override
+            public void onSuccess(List<TaskModel> result) {
+                _list.setValue(result);
+            }
+
+            @Override
+            public void onFailure(String message) {
+                _list.setValue(new ArrayList<TaskModel>());
+                _feedback.setValue(new Feedback(message));
+            }
+        });
     }
 }

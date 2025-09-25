@@ -14,6 +14,7 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.devmasterteam.tasks.databinding.FragmentTaskListBinding;
+import com.devmasterteam.tasks.service.listener.Feedback;
 import com.devmasterteam.tasks.service.listener.TaskListener;
 import com.devmasterteam.tasks.view.adapter.TaskAdapter;
 import com.devmasterteam.tasks.R;
@@ -65,6 +66,7 @@ public class TaskListFragment extends Fragment {
 
         // Cria os observadores
         loadObservers();
+        this.viewModel.list();
 
         Bundle bundle = getArguments();
         if (bundle != null) {
@@ -83,10 +85,25 @@ public class TaskListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        viewModel.list(filter);
+        viewModel.list();
     }
 
     private void loadObservers() {
+        this.viewModel.list.observe(getViewLifecycleOwner(), new Observer<List<TaskModel>>() {
+            @Override
+            public void onChanged(List<TaskModel> taskModels) {
+                String s = "";
+            }
+        });
+
+        this.viewModel.feedback.observe(getViewLifecycleOwner(), new Observer<Feedback>() {
+            @Override
+            public void onChanged(Feedback feedback) {
+                if (!feedback.isSuccess()) {
+                    toast(feedback.getMessage());
+                }
+            }
+        });
     }
 
     private void toast(String msg) {
