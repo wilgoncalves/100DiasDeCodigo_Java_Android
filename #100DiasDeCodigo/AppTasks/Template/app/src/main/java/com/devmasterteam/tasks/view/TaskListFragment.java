@@ -92,7 +92,7 @@ public class TaskListFragment extends Fragment {
         this.viewModel.list.observe(getViewLifecycleOwner(), new Observer<List<TaskModel>>() {
             @Override
             public void onChanged(List<TaskModel> taskModels) {
-                String s = "";
+                adapter.updateList(taskModels);
             }
         });
 
