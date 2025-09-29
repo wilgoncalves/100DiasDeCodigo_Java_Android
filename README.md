@@ -125,3 +125,5 @@
 * 62 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/AppTasks/Template"> App Tasks - Criando interface para listagem de tarefas</a>
 
 * 63 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/AppTasks/Template"> App Tasks - Implementando funcionalidade para a listagem de tarefas</a>
+
+* 64 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/AppTasks/Template"> App Tasks - Atualizando listagem de tarefas</a>
