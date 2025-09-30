@@ -24,8 +24,11 @@ public class TaskViewModel extends AndroidViewModel {
     private MutableLiveData<List<PriorityModel>> mListPriority = new MutableLiveData<>();
     public LiveData<List<PriorityModel>> listPriority = this.mListPriority;
 
-    private MutableLiveData<Feedback> mTaskSave = new MutableLiveData<>();
-    public LiveData<Feedback> taskSave = this.mTaskSave;
+    private MutableLiveData<TaskModel> mTaskLoad = new MutableLiveData<>();
+    public LiveData<TaskModel> taskLoad = this.mTaskLoad;
+
+    private MutableLiveData<Feedback> mFeedback = new MutableLiveData<>();
+    public LiveData<Feedback> feedback = this.mFeedback;
 
     public TaskViewModel(@NonNull Application application) {
         super(application);
@@ -39,19 +42,33 @@ public class TaskViewModel extends AndroidViewModel {
     }
 
     public void load(int id) {
-    }
-
-    public void save(TaskModel task) {
-        this.taskRepository.save(task, new APIListener<Boolean>() {
+        this.taskRepository.load(id, new APIListener<TaskModel>() {
             @Override
-            public void onSuccess(Boolean result) {
-                mTaskSave.setValue(new Feedback());
+            public void onSuccess(TaskModel result) {
+                mTaskLoad.setValue(result);
             }
 
             @Override
             public void onFailure(String message) {
-                mTaskSave.setValue(new Feedback(message));
+                mFeedback.setValue(new Feedback(message));
             }
         });
+    }
+
+    public void save(TaskModel task) {
+
+        if (task.getId() == 0) {
+            this.taskRepository.create(task, new APIListener<Boolean>() {
+                @Override
+                public void onSuccess(Boolean result) {
+                    mFeedback.setValue(new Feedback());
+                }
+
+                @Override
+                public void onFailure(String message) {
+                    mFeedback.setValue(new Feedback(message));
+                }
+            });
+        }
     }
 }

@@ -66,11 +66,11 @@ public class TaskListFragment extends Fragment {
 
         // Cria os observadores
         loadObservers();
-        this.viewModel.list();
+        this.viewModel.list(this.filter);
 
         Bundle bundle = getArguments();
         if (bundle != null) {
-            filter = bundle.getInt(TaskConstants.TASKFILTER.KEY);
+            this.filter = bundle.getInt(TaskConstants.TASKFILTER.KEY);
         }
 
         return binding.getRoot();
@@ -85,7 +85,7 @@ public class TaskListFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        viewModel.list();
+        this.viewModel.list(this.filter);
     }
 
     private void loadObservers() {

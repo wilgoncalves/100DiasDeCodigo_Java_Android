@@ -25,17 +25,19 @@ import com.devmasterteam.tasks.viewmodel.TaskViewModel;
 import com.devmasterteam.tasks.service.constants.TaskConstants;
 import com.devmasterteam.tasks.service.model.TaskModel;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class TaskActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
-    private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+    private final SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
     private TaskViewModel viewModel;
-    private List<Integer> listPriorityId = new ArrayList<>();
+    private final List<Integer> listPriorityId = new ArrayList<>();
     private int taskId = 0;
     private ActivityTaskBinding binding;
 
@@ -116,11 +118,10 @@ public class TaskActivity extends AppCompatActivity implements View.OnClickListe
     private void handleSave() {
         TaskModel task = new TaskModel();
 
-        // Testando:
+        task.setId(this.taskId);
         task.setDescription(this.binding.editDescription.getText().toString());
         task.setComplete(this.binding.checkComplete.isChecked());
         task.setDueDate(this.binding.buttonDate.getText().toString());
-        //
         task.setPriorityId(this.listPriorityId.get(this.binding.spinnerPriority.getSelectedItemPosition()));
         viewModel.save(task);
     }
@@ -145,12 +146,39 @@ public class TaskActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        this.viewModel.taskSave.observe(this, new Observer<Feedback>() {
+        this.viewModel.taskLoad.observe(this, new Observer<TaskModel>() {
+            @Override
+            public void onChanged(TaskModel taskModel) {
+                binding.editDescription.setText(taskModel.getDescription());
+                binding.checkComplete.setChecked(taskModel.getComplete());
+                binding.spinnerPriority.setSelection(getIndex(taskModel.getPriorityId()));
+
+                try {
+                    Date date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(taskModel.getDueDate());
+                    binding.buttonDate.setText(format.format(date));
+                } catch (ParseException e) {
+                    binding.buttonDate.setText("--");
+                }
+            }
+        });
+
+        this.viewModel.feedback.observe(this, new Observer<Feedback>() {
             @Override
             public void onChanged(Feedback feedback) {
                 String s = "";
             }
         });
+    }
+
+    private int getIndex(int priorityId) {
+        int index = 0;
+        for (int i = 0; i < this.listPriorityId.size(); i++) {
+            if (this.listPriorityId.get(i) == priorityId) {
+                index = i;
+                break;
+            }
+        }
+        return index;
     }
 
     private void loadSpinner(List<PriorityModel> list) {
