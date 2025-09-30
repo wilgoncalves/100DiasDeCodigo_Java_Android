@@ -165,7 +165,16 @@ public class TaskActivity extends AppCompatActivity implements View.OnClickListe
         this.viewModel.feedback.observe(this, new Observer<Feedback>() {
             @Override
             public void onChanged(Feedback feedback) {
-                String s = "";
+                if (feedback.isSuccess()) {
+                    if (taskId == 0) {
+                        toast(getApplicationContext().getString(R.string.msg_task_created));
+                    } else {
+                        toast(getApplicationContext().getString(R.string.msg_task_updated));
+                    }
+                    finish();
+                } else {
+                    toast(feedback.getMessage());
+                }
             }
         });
     }

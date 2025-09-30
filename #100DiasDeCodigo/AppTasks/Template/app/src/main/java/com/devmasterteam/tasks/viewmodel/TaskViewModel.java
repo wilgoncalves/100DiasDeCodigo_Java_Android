@@ -56,19 +56,22 @@ public class TaskViewModel extends AndroidViewModel {
     }
 
     public void save(TaskModel task) {
+        APIListener<Boolean> listener = new APIListener<Boolean>() {
+            @Override
+            public void onSuccess(Boolean result) {
+                mFeedback.setValue(new Feedback());
+            }
+
+            @Override
+            public void onFailure(String message) {
+                mFeedback.setValue(new Feedback(message));
+            }
+        };
 
         if (task.getId() == 0) {
-            this.taskRepository.create(task, new APIListener<Boolean>() {
-                @Override
-                public void onSuccess(Boolean result) {
-                    mFeedback.setValue(new Feedback());
-                }
-
-                @Override
-                public void onFailure(String message) {
-                    mFeedback.setValue(new Feedback(message));
-                }
-            });
+            this.taskRepository.create(task, listener);
+        } else {
+            this.taskRepository.update(task, listener);
         }
     }
 }

@@ -54,4 +54,20 @@ public class TaskListViewModel extends AndroidViewModel {
             this.taskRepository.overdue(listener);
         }
     }
+
+    public void delete(int id) {
+        this.taskRepository.delete(id, new APIListener<Boolean>() {
+            @Override
+            public void onSuccess(Boolean result) {
+                if (result) {
+                    _feedback.setValue(new Feedback());
+                }
+            }
+
+            @Override
+            public void onFailure(String message) {
+                _feedback.setValue(new Feedback(message));
+            }
+        });
+    }
 }

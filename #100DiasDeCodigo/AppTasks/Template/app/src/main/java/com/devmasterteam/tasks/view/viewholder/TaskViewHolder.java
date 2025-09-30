@@ -1,5 +1,7 @@
 package com.devmasterteam.tasks.view.viewholder;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -57,6 +59,22 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 listener.onListClick(task.getId());
+            }
+        });
+
+        this.binding.textDescription.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                new AlertDialog.Builder(itemView.getContext())
+                        .setTitle(R.string.title_task_removal)
+                        .setMessage(R.string.label_remove_task)
+                        .setPositiveButton(R.string.button_yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                listener.onDeleteClick(task.getId());
+                            }
+                        }).setNeutralButton(R.string.button_cancel, null).show();
+                return false;
             }
         });
     }
