@@ -29,8 +29,7 @@ public class PersonRepository extends BaseRepository {
         this.context = context;
     }
 
-    public void create(String name, String email, String password, final APIListener<PersonModel> listener){
-        Call<PersonModel> call = this.personService.create(name, email, password, true);
+    private void call(Call<PersonModel> call, APIListener<PersonModel> listener) {
         call.enqueue(new Callback<PersonModel>() {
             @Override
             public void onResponse(Call<PersonModel> call, Response<PersonModel> response) {
@@ -48,23 +47,26 @@ public class PersonRepository extends BaseRepository {
         });
     }
 
-    public void login(String email, String password, final APIListener<PersonModel> listener) {
-        Call<PersonModel> call = this.personService.login(email, password);
-        call.enqueue(new Callback<PersonModel>() {
-            @Override
-            public void onResponse(Call<PersonModel> call, Response<PersonModel> response) {
-                if (response.code() == TaskConstants.HTTP.SUCCESS) {
-                    listener.onSuccess(response.body());
-                } else {
-                    listener.onFailure(handleFailure(response.errorBody()));
-                }
-            }
+    public void create(String name, String email, String password, final APIListener<PersonModel> listener){
 
-            @Override
-            public void onFailure(Call<PersonModel> call, Throwable t) {
-                listener.onFailure(context.getString(R.string.error_unexpected));
-            }
-        });
+        if (!super.isConnectionAvailable()) {
+            listener.onFailure(context.getString(R.string.error_internet_connection));
+            return;
+        }
+
+        Call<PersonModel> call = this.personService.create(name, email, password, true);
+        call(call, listener);
+    }
+
+    public void login(String email, String password, final APIListener<PersonModel> listener) {
+
+        if (!super.isConnectionAvailable()) {
+            listener.onFailure(context.getString(R.string.error_internet_connection));
+            return;
+        }
+
+        Call<PersonModel> call = this.personService.login(email, password);
+        call(call, listener);
     }
 
     public void saveUserData(PersonModel model) {

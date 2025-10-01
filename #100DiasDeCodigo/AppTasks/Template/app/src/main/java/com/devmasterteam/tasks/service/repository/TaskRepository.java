@@ -26,7 +26,13 @@ public class TaskRepository extends BaseRepository {
         this.taskService = RetrofitClient.createService(TaskService.class);
     }
 
-    private void save(Call<Boolean> call, final APIListener<Boolean> listener) {
+    private void persist(Call<Boolean> call, final APIListener<Boolean> listener) {
+
+        if (!super.isConnectionAvailable()) {
+            listener.onFailure(context.getString(R.string.error_internet_connection));
+            return;
+        }
+
         call.enqueue(new Callback<Boolean>() {
             @Override
             public void onResponse(@NonNull Call<Boolean> call, @NonNull Response<Boolean> response) {
@@ -43,6 +49,7 @@ public class TaskRepository extends BaseRepository {
             }
         });
     }
+
     public void create(TaskModel taskModel, final APIListener<Boolean> listener) {
         Call<Boolean> call = taskService.create(
                 taskModel.getPriorityId(),
@@ -50,7 +57,7 @@ public class TaskRepository extends BaseRepository {
                 taskModel.getDueDate(),
                 taskModel.getComplete()
         );
-        this.save(call, listener);
+        this.persist(call, listener);
     }
 
     public void update(TaskModel taskModel, final APIListener<Boolean> listener) {
@@ -61,29 +68,31 @@ public class TaskRepository extends BaseRepository {
                 taskModel.getDueDate(),
                 taskModel.getComplete()
         );
-        this.save(call, listener);
+        this.persist(call, listener);
+    }
+
+    public void complete(int id, final APIListener<Boolean> listener) {
+        Call<Boolean> call = this.taskService.complete(id);
+        this.persist(call, listener);
+    }
+
+    public void undo(int id, final APIListener<Boolean> listener) {
+        Call<Boolean> call = this.taskService.undo(id);
+        this.persist(call, listener);
     }
 
     public void delete(int id, APIListener<Boolean> listener) {
         Call<Boolean> call = this.taskService.delete(id);
-        call.enqueue(new Callback<Boolean>() {
-            @Override
-            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                if (response.code() == TaskConstants.HTTP.SUCCESS) {
-                    listener.onSuccess(response.body());
-                } else {
-                    listener.onFailure(handleFailure(response.errorBody()));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Boolean> call, Throwable t) {
-                listener.onFailure(context.getString(R.string.error_unexpected));
-            }
-        });
+        this.persist(call, listener);
     }
 
     private void list(Call<List<TaskModel>> call, final APIListener<List<TaskModel>> listener) {
+
+        if (!super.isConnectionAvailable()) {
+            listener.onFailure(context.getString(R.string.error_internet_connection));
+            return;
+        }
+
         call.enqueue(new Callback<List<TaskModel>>() {
             @Override
             public void onResponse(@NonNull Call<List<TaskModel>> call, @NonNull Response<List<TaskModel>> response) {
@@ -117,6 +126,12 @@ public class TaskRepository extends BaseRepository {
     }
 
     public void load(int id, final APIListener<TaskModel> listener) {
+
+        if (!super.isConnectionAvailable()) {
+            listener.onFailure(context.getString(R.string.error_internet_connection));
+            return;
+        }
+
         Call<TaskModel> call = this.taskService.load(id);
         call.enqueue(new Callback<TaskModel>() {
             @Override

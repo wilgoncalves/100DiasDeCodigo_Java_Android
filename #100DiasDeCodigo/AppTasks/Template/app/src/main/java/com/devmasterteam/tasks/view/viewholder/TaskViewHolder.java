@@ -77,5 +77,16 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
                 return false;
             }
         });
+
+        this.binding.imageComplete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (task.getComplete()) {
+                    listener.onUndoClick(task.getId());
+                } else {
+                    listener.onCompleteClick(task.getId());
+                }
+            }
+        });
     }
 }
