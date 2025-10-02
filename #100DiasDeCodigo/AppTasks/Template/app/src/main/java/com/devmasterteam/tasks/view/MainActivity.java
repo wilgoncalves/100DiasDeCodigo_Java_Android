@@ -2,6 +2,8 @@ package com.devmasterteam.tasks.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -72,6 +74,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_logout) {
+            handleLogout();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
@@ -80,14 +96,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleLogout() {
         viewModel.logout();
-
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
 
-    /**
-     * Dados mutáveis
-     */
     private void loadObservers() {
     }
 }
