@@ -133,3 +133,5 @@
 * 66 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/AppTasks/Template"> App Tasks - Remoção de tarefas</a>
 
 * 67 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/AppTasks/Template"> App Tasks - Atualização de tarefas completas e incompletas + validação de conexão com internet</a>
+
+* 68 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/AppTasks/Template"> App Tasks - Incluindo funcionalidade de logout no aplicativo</a>
