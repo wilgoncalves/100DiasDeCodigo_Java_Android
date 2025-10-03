@@ -11,4 +11,5 @@
     <color name="colorGrayText">#c1c1c1</color>
     <color name="colorButtonText">#A6A6A6</color>
     <color name="colorDescriptionTask">#535353</color>
+    <color name="colorPrimary">#6462a3</color>
 </resources>
