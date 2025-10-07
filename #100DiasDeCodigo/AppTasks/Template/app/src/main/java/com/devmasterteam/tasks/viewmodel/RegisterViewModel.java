@@ -28,6 +28,7 @@ public class RegisterViewModel extends AndroidViewModel {
         this.personRepository.create(name, email, password, new APIListener<PersonModel>() {
             @Override
             public void onSuccess(PersonModel result) {
+                result.setEmail(email);
                 personRepository.saveUserData(result);
                 mCreate.setValue(new Feedback());
             }

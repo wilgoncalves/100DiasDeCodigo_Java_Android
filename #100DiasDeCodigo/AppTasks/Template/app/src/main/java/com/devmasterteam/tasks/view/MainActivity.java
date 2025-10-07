@@ -101,5 +101,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadObservers() {
+        this.viewModel.userData.observe(this, new Observer<PersonModel>() {
+            @Override
+            public void onChanged(PersonModel personModel) {
+                View headerView = binding.navView.getHeaderView(0);
+                TextView textName = headerView.findViewById(R.id.text_name);
+                TextView textEmail = headerView.findViewById(R.id.text_email);
+
+                textName.setText(personModel.getName());
+                textEmail.setText(personModel.getEmail());
+            }
+        });
     }
 }

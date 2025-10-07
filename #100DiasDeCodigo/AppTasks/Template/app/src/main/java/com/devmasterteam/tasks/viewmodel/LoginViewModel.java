@@ -38,6 +38,7 @@ public class LoginViewModel extends AndroidViewModel {
             @Override
             public void onSuccess(PersonModel result) {
                 // Salva os dados de login
+                result.setEmail(email);
                 personRepository.saveUserData(result);
                 // Informa sucesso
                 mLogin.setValue(new Feedback());
