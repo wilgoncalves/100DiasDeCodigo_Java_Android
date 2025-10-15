@@ -6,7 +6,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -15,8 +18,11 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.devmasterteam.tasks.R;
 import com.devmasterteam.tasks.databinding.ActivityLoginBinding;
+import com.devmasterteam.tasks.service.helper.FingerPrintHelper;
 import com.devmasterteam.tasks.service.listener.Feedback;
 import com.devmasterteam.tasks.viewmodel.LoginViewModel;
+
+import java.util.concurrent.Executor;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -54,6 +60,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loadObservers();
 
         this.verifyUserLogged();
+
+        this.openAuthentication();
     }
 
     @Override
@@ -68,6 +76,38 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         else if (id == R.id.text_register) {
             startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
         }
+    }
+
+    private void openAuthentication() {
+        // Executor
+        Executor executor = ContextCompat.getMainExecutor(this);
+        // BiometricPrompt
+        BiometricPrompt biometricPrompt = new BiometricPrompt(LoginActivity.this,
+                executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+            }
+        });
+        // BiometricInfo
+        BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Title")
+                .setSubtitle("Subtitle")
+                .setDescription("Description")
+                .setNegativeButtonText("Cancel")
+                .build();
+
+        biometricPrompt.authenticate(promptInfo);
     }
 
     public void verifyUserLogged() {
