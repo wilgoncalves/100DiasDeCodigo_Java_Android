@@ -59,9 +59,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         // Cria observadores
         loadObservers();
 
-        this.verifyUserLogged();
-
-        this.openAuthentication();
+        this.loginViewModel.isFingerprintAvailable();
     }
 
     @Override
@@ -92,6 +90,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
+                startMain();
             }
 
             @Override
@@ -108,10 +107,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .build();
 
         biometricPrompt.authenticate(promptInfo);
-    }
-
-    public void verifyUserLogged() {
-        this.loginViewModel.verifyUserLogged();
     }
 
     private void setListeners() {
@@ -131,11 +126,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        this.loginViewModel.userLogged.observe(this, new Observer<Boolean>() {
+        this.loginViewModel.fingerprint.observe(this, new Observer<Boolean>() {
             @Override
-            public void onChanged(Boolean logged) {
-                if (logged) {
-                    startMain();
+            public void onChanged(Boolean fingerprintAvailable) {
+                if (fingerprintAvailable) {
+                    openAuthentication();
                 }
             }
         });
