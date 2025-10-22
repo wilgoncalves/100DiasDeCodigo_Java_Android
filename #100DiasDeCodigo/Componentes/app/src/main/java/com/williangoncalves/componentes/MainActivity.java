@@ -4,7 +4,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.SeekBar;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
@@ -22,7 +24,8 @@ import com.williangoncalves.componentes.databinding.ActivityMainBinding;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener,
+        AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener {
 
     private ActivityMainBinding binding;
 
@@ -72,8 +75,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             String s = "";
         } else if (id == R.id.button_set_spinner) {
-
+            this.binding.spinnerDynamic.setSelection(0);
+        } else if (id == R.id.button_set_seek) {
+            this.binding.seekbar.setProgress(12);
+        } else if (id == R.id.button_get_seek) {
+            this.binding.seekbar.getProgress();
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+        String s = adapterView.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        this.binding.textSeekbarValue.setText(String.valueOf(progress));
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+        toast("Start tracking");
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+        toast("Stop tracking");
+    }
+
+    private void toast(String str) {
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 
     private void loadSpinner() {
@@ -92,6 +128,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.binding.buttonSnack.setOnClickListener(this);
         this.binding.buttonGetSpinner.setOnClickListener(this);
         this.binding.buttonSetSpinner.setOnClickListener(this);
-    }
+        this.binding.buttonGetSeek.setOnClickListener(this);
+        this.binding.buttonSetSeek.setOnClickListener(this);
 
+        this.binding.spinnerDynamic.setOnItemSelectedListener(this);
+
+        this.binding.seekbar.setOnSeekBarChangeListener(this);
+    }
 }
