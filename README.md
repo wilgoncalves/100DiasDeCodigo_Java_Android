@@ -153,3 +153,5 @@
 * 76 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/blob/main/%23100DiasDeCodigo/Componentes/app/src/main/res/layout/activity_main.xml"> Componentes: Toast Notification</a>
 
 * 77 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/blob/main/%23100DiasDeCodigo/Componentes/app/src/main/res/layout/activity_main.xml"> Componentes: Snackbar e Spinner</a>
+
+* 78 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/blob/main/%23100DiasDeCodigo/Componentes/app/src/main/res/layout/activity_main.xml"> Componentes: Seekbar</a>
