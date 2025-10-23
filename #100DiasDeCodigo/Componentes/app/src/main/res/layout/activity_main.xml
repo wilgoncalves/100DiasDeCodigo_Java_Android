@@ -90,4 +90,19 @@
             android:layout_weight="1"
             android:text="Atribuir seekbar" />
     </LinearLayout>
+
+    <android.widget.Switch
+        android:id="@+id/switch_on_off"
+        android:layout_marginTop="16dp"
+        android:text="On/Off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <CheckBox
+        android:id="@+id/check_on_off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="on/off"
+        android:checked="true"
+        android:layout_marginTop="16dp" />
 </LinearLayout>

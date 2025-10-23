@@ -6,11 +6,13 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -25,7 +27,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,
-        AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener {
+        AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener,
+        CompoundButton.OnCheckedChangeListener {
 
     private ActivityMainBinding binding;
 
@@ -112,6 +115,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onCheckedChanged(@NonNull CompoundButton compoundButton, boolean isChecked) {
+        if (compoundButton.getId() == R.id.switch_on_off) {
+            this.binding.switchOnOff.isChecked();
+            this.binding.switchOnOff.setChecked(false);
+        } else if (compoundButton.getId() == R.id.check_on_off) {
+            this.binding.checkOnOff.isChecked();
+            this.binding.checkOnOff.setChecked(false);
+        }
+    }
+
     private void loadSpinner() {
         // lista
         List<String> list = Arrays.asList("Dólar", "Euro", "Libra", "Real");
@@ -134,5 +148,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.binding.spinnerDynamic.setOnItemSelectedListener(this);
 
         this.binding.seekbar.setOnSeekBarChangeListener(this);
+
+        this.binding.switchOnOff.setOnCheckedChangeListener(this);
+        this.binding.checkOnOff.setOnCheckedChangeListener(this);
     }
 }
