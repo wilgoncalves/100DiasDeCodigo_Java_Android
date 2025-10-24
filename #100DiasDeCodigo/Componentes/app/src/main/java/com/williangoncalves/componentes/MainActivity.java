@@ -123,6 +123,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (compoundButton.getId() == R.id.check_on_off) {
             this.binding.checkOnOff.isChecked();
             this.binding.checkOnOff.setChecked(false);
+        } else if (compoundButton.getId() == R.id.radio_no) {
+            this.binding.radioNo.isChecked();
+            this.binding.radioNo.setChecked(true);
+        } else if (compoundButton.getId() == R.id.radio_yes) {
+
         }
     }
 
@@ -151,5 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         this.binding.switchOnOff.setOnCheckedChangeListener(this);
         this.binding.checkOnOff.setOnCheckedChangeListener(this);
+        this.binding.radioYes.setOnCheckedChangeListener(this);
+        this.binding.radioNo.setOnCheckedChangeListener(this);
     }
 }
