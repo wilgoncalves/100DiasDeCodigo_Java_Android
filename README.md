@@ -161,3 +161,5 @@
 * 80 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/blob/main/%23100DiasDeCodigo/Componentes/app/src/main/java/com/williangoncalves/componentes/DateActivity.java"> Componentes: RadioButton, DatePicker e TimePicker</a>
 
 * 81 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/novoprojetocurso2"> Configurando Android Studio para novo projeto</a>
+
+* 82 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/AppSorteio"> Criando aplicativo Sorteio</a>
