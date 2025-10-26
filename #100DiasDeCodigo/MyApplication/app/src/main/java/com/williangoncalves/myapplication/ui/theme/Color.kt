@@ -1,4 +1,4 @@
-package com.williangoncalves.appsorteio.ui.theme
+package com.williangoncalves.myapplication.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

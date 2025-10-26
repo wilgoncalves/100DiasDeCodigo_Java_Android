@@ -1,4 +1,4 @@
-package com.williangoncalves.appsorteio
+package com.williangoncalves.myapplication
 
 import org.junit.Test
 
