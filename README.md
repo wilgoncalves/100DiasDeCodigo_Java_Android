@@ -165,3 +165,5 @@
 * 82 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/AppSorteio"> Criando aplicativo Sorteio</a>
 
 * 83 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/AppSorteio"> Adicionando textos e botões no aplicativo Sorteio</a>
+
+* 84 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/AppSorteio"> Finalizando aplicativo Sorteio e praticando estruturas de layout</a>
