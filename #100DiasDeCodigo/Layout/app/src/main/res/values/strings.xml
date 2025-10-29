@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Layout</string>
+    <string name="botao_cadastro">Cadastrar</string>
 </resources>
