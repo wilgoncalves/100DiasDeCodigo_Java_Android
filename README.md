@@ -171,3 +171,5 @@
 * 85 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/Layout"> Layouts: Orientações de tela e customização de temas</a>
 
 * 86 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/ConstraintLayout2"> Uso de Constraint Layout</a>
+
+* 87 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/ConstraintLayout2"> Constraint Layout: Criando interface para app de notícias</a>
