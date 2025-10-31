@@ -1,10 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.ConstraintLayout" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Base.Theme.NetflixInterface" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/my_light_primary</item>
         <item name="android:statusBarColor">@color/status_bar</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
-    <style name="Theme.ConstraintLayout" parent="Base.Theme.ConstraintLayout" />
+    <style name="Theme.NetflixInterface" parent="Base.Theme.NetflixInterface" />
 </resources>

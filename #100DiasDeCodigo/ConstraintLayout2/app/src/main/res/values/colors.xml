@@ -2,6 +2,7 @@
 <resources>
     <color name="my_light_primary">#009688</color>
     <color name="my_dark_primary">#00564E</color>
+    <color name="status_bar">#00645C</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
