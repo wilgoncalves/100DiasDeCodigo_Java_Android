@@ -181,3 +181,5 @@
 * 90 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/Alinhamento"> Utilizando Chains + Truques de alinhamento</a>
 
 * 91 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/Alinhamento"> LinearLayout, FrameLayout, GridLayout + códigos em Java</a>
+
+* 92 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/codigos-condicionais"> Recapitulando estruturas da linguagem Java</a>
