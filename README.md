@@ -179,3 +179,5 @@
 * 89 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/NetflixInterface"> Finalizando interface para app da Netflix</a>
 
 * 90 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/Alinhamento"> Utilizando Chains + Truques de alinhamento</a>
+
+* 91 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/Alinhamento"> LinearLayout, FrameLayout, GridLayout + códigos em Java</a>
