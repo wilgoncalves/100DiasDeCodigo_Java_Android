@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ProjetoFrasesDoDia" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/my_light_primary</item>
+    </style>
+
+    <style name="Theme.ProjetoFrasesDoDia" parent="Base.Theme.ProjetoFrasesDoDia" />
+</resources>
