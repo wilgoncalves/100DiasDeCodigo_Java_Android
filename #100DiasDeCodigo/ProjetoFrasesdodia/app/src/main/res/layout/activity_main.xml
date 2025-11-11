@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:background="@color/button_color"
+        android:onClick="gerarNovaFrase"
         android:text="@string/button_nova_frase"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textResultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
