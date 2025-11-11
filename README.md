@@ -185,3 +185,5 @@
 * 92 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/codigos-condicionais"> Recapitulando estruturas da linguagem Java</a>
 
 * 93 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/ProjetoFrasesdodia/app"> Criando interface para app Frases do Dia</a>
+
+* 94 dias de código -<a href="https://github.com/wilgoncalves/100DiasDeCodigo_Java_Android/tree/main/%23100DiasDeCodigo/ProjetoFrasesdodia/app"> Finalizando app Frases do Dia</a>
