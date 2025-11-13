@@ -21,5 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Classes e metodos"
 include(":app")
-include(":app")
  
