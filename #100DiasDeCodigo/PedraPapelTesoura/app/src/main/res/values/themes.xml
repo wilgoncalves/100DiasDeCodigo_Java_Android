@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.PedraPapelTesoura" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/my_light_primary</item>
+        <item name="android:statusBarColor">@color/status_bar</item>
+    </style>
+
+    <style name="Theme.PedraPapelTesoura" parent="Base.Theme.PedraPapelTesoura" />
+</resources>

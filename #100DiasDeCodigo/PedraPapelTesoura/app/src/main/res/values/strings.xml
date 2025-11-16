@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Pedra Papel Tesoura</string>
+    <string name="app_escolha">Escolha do aplicativo:</string>
+    <string name="user_escolha">Escolha uma opção abaixo:</string>
+</resources>
