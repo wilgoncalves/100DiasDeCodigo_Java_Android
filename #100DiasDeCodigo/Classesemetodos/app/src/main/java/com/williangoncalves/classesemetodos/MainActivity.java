@@ -63,10 +63,24 @@ public class MainActivity extends AppCompatActivity {
         passaro.voar();
          */
 
+        /*
         // Modificadores de acesso:
         Conta conta = new Conta();
         conta.depositar(100);
         conta.sacar(50);
         System.out.println(conta.recuperarSaldo());
+         */
+
+        /*
+        // Sobrecarga de métodos:
+        Pessoa pessoa = new Pessoa();
+        pessoa.exibirDados("Willian");
+        pessoa.exibirDados("Eduardo", 27);
+         */
+
+        //ContaBancaria conta = new ContaBancaria(123456);
+
+        Obama obama = new Obama();
+        obama.direitosDeveres();
     }
 }

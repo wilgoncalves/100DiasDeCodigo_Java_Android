@@ -2,6 +2,8 @@ package com.williangoncalves.pedrapapeltesoura;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,9 +13,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.williangoncalves.pedrapapeltesoura.databinding.ActivityMainBinding;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
-    ActivityMainBinding binding;
+    //ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,42 @@ public class MainActivity extends AppCompatActivity {
 
     public void opcaoSelecionada(String opcaoSelecionada) {
 
-        System.out.println("Item: " + opcaoSelecionada);
+        ImageView imagemResultado = findViewById(R.id.imagemResultado);
+
+        int numero = new Random().nextInt(3);
+        String[] opcoes = {"Pedra", "Papel", "Tesoura"};
+        String opcaoApp = opcoes[numero];
+
+        switch (opcaoApp) {
+            case "Pedra":
+                imagemResultado.setImageResource(R.drawable.pedra);
+                break;
+            case "Papel":
+                imagemResultado.setImageResource(R.drawable.papel);
+                break;
+            case "Tesoura":
+                imagemResultado.setImageResource(R.drawable.tesoura);
+                break;
+        }
+
+        TextView retornoMensagem = findViewById(R.id.retornoMensagem);
+
+        if ((opcaoApp == "Tesoura" && opcaoSelecionada == "Papel")
+            || (opcaoApp == "Papel" && opcaoSelecionada == "Pedra")
+            || (opcaoApp == "Pedra" && opcaoSelecionada == "Tesoura")) {
+
+            retornoMensagem.setText("Você perdeu!");
+
+        } else if ((opcaoSelecionada == "Tesoura" && opcaoApp == "Papel")
+                    || (opcaoSelecionada == "Papel" && opcaoApp == "Pedra")
+                    || (opcaoSelecionada == "Pedra" && opcaoApp == "Tesoura")) {
+
+            retornoMensagem.setText("Você ganhou!");
+
+        } else {
+            retornoMensagem.setText("Empate!!!");
+        }
+
+        System.out.println("Item: " + opcaoApp);
     }
 }
