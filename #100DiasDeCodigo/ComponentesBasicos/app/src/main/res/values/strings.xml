@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Componentes Basicos</string>
+    <string name="resultado">Nome: %1$s \nE-mail: %2$s</string>
 </resources>
