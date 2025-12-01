@@ -5,4 +5,5 @@
     <color name="my_light_primary">#00268E</color>
     <color name="my_dark_primary">#00268E</color>
     <color name="statusBarColor">#0139D1</color>
+    <color name="colorAccent">#0139D1</color>
 </resources>

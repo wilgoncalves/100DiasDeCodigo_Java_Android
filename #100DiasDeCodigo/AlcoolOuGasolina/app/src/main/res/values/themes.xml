@@ -3,6 +3,7 @@
     <style name="Base.Theme.AlcoolOuGasolina" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <item name="colorPrimary">@color/my_light_primary</item>
         <item name="android:statusBarColor">@color/statusBarColor</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="Theme.AlcoolOuGasolina" parent="Base.Theme.AlcoolOuGasolina" />
