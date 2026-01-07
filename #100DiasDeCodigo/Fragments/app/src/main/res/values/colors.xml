@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="my_dark_primary">#004BFA</color>
+    <color name="my_light_primary">#004BFA</color>
+    <color name="statusBarColor">#3B82F4</color>
+    <color name="colorAccent">#03A9F4</color>
+    <color name="fundo_app">#FFFFFF</color>
+</resources>
