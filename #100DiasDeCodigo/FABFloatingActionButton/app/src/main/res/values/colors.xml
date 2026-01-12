@@ -3,4 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="toolbar">#009688</color>
+    <color name="colorPrimary">#4CAF50</color>
+    <color name="colorPrimaryDark">#009688</color>
+    <color name="colorAccent">#CDDC39</color>
+    <color name="statusBarColor">#009688</color>
 </resources>
