@@ -8,7 +8,16 @@
     <string name="action_settings">Configurações</string>
     <string name="action_sair">Sair</string>
 
-    <string name="menu_home">Inicial</string>
+    <string name="menu_home">Início</string>
     <string name="menu_gallery">Galeria</string>
     <string name="menu_slideshow">Apresentação</string>
+    <string name="menu_tools">Ferramentas</string>
+    <string name="menu_contact">Contatos</string>
+    <string name="menu_share">Compartilhar</string>
+    <string name="menu_send">Enviar</string>
+
+    <string name="tools_fragment">Ferramentas</string>
+    <string name="contact_fragment">Contatos</string>
+    <string name="share_fragment">Compartilhamentos</string>
+    <string name="send_fragment">Envios</string>
 </resources>
