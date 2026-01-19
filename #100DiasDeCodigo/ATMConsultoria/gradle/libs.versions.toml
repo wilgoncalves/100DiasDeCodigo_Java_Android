@@ -1,5 +1,6 @@
 [versions]
 agp = "8.11.2"
+androidAboutPage = "2.0.0"
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
@@ -12,6 +13,7 @@ navigationFragment = "2.9.6"
 navigationUi = "2.9.6"
 
 [libraries]
+android-about-page = { module = "io.github.medyo:android-about-page", version.ref = "androidAboutPage" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

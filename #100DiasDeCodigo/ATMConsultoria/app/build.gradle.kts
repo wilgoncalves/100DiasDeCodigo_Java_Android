@@ -46,4 +46,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    // Biblioteca About Page:
+    implementation(libs.android.about.page)
 }

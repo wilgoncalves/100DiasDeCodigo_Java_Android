@@ -1,5 +1,7 @@
 package com.williangoncalves.atmconsultoria;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -32,9 +34,8 @@ public class MainActivity extends AppCompatActivity {
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
-                        .setAnchorView(R.id.fab).show();
+
+                enviarEmail();
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -49,6 +50,43 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+    }
+
+    public void enviarEmail() {
+
+        String celular = "tel:11996352894";
+        String imagem = "https://i.pinimg.com/736x/64/ce/40/64ce408aaf1fd2a47469e0800a9648fd.jpg";
+        String endereco = "https://www.google.com/maps/place/Parque+Dona+Lindu/@-8.1412917,-34.9041136,17z/data=!3m1!4b1!4m6!3m5!1s0x7ab1fbb126b6c8f:0x9428b8c3b9bb5afb!8m2!3d-8.1412917!4d-34.9041136!16s%2Fg%2F121wccjd?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D";
+
+        // Abrir app de ligação:
+        //Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(celular));
+
+        // Abrindo imagem diretamente do Google:
+        //Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(imagem));
+
+        // Abrindo endereço no Google Maps:
+        //Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(endereco));
+        //startActivity(intent);
+
+        // Envio de e-mail:
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"atendimento@atmconsultoria.com.br"});
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Contato pelo aplicativo");
+        intent.putExtra(Intent.EXTRA_TEXT, "Mensagem automática.");
+
+        // Código para envio de email:
+        intent.setType("message/rfc822");
+
+        // Abre opções para apps de mensagens:
+        //intent.setType("text/plain");
+
+        // Abre apps de imagens:
+        //intent.setType("image/*");
+
+        // Abre app para PDF:
+        //intent.setType("application/pdf");
+;
+        startActivity(Intent.createChooser(intent, "Compartilhar:"));
     }
 
     @Override

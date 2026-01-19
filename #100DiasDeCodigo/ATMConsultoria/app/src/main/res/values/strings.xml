@@ -17,4 +17,18 @@
     <string name="clientes_fragment">Clientes</string>
     <string name="contato_fragment">Contatos</string>
     <string name="sobre_fragment">Saiba mais sobre a ATM Consultoria</string>
+
+    <string name="lorem_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Donec sed elit ipsum. Nam quam lorem, viverra nec ornare eget, ultrices vitae ipsum.
+        Pellentesque auctor, ante a blandit egestas, lectus felis pellentesque lacus,
+        et maximus velit augue a neque. Donec mattis lacus sem, sed euismod est molestie vel.
+        Duis varius lacinia auctor. Proin vulputate erat non sodales sollicitudin.
+        Mauris luctus fermentum tortor id dignissim. Morbi eget egestas sem.
+        Integer tincidunt nibh tellus, iaculis ultricies nisl sollicitudin eget.
+        Interdum et malesuada fames ac ante ipsum primis in faucibus.</string>
+
+    <string name="clientes_text">Em mais de 15 anos de existência, a ATM acumula experiência
+        em serviços de consultoria para empresas nacionais e multinacionais de diversos portes,
+        tendo atendido mais de 1000 empresas desde sua abertura.</string>
+
 </resources>
