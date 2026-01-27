@@ -4,6 +4,5 @@
         <item name="colorPrimary">@color/my_dark_primary</item>
         <item name="android:statusBarColor">@color/statusBarColor</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:colorBackground">@color/black_gray</item>
     </style>
 </resources>

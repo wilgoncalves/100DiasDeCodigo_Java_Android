@@ -3,8 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="black_gray">#545050</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="my_dark_primary">#F27830</color>
-    <color name="my_light_primary">#F27830</color>
+    <color name="my_dark_primary">#D32F2F</color>
+    <color name="my_light_primary">#F44336</color>
     <color name="statusBarColor">#D93D1A</color>
-    <color name="colorAccent">#F27830</color>
+    <color name="colorAccent">#D32F2F</color>
 </resources>

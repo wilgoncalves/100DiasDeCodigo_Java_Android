@@ -4,7 +4,6 @@
         <item name="colorPrimary">@color/my_light_primary</item>
         <item name="android:statusBarColor">@color/statusBarColor</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:colorBackground">@color/black_gray</item>
     </style>
 
     <style name="Theme.ExecutandoVideos" parent="Base.Theme.ExecutandoVideos" />

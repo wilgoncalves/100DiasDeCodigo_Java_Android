@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExecutandoVideos">
         <activity
+            android:name=".PlayerActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="landscape"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
