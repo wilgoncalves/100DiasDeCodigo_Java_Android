@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.PreferenciasDoUsuario" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/my_light_primary</item>
+        <item name="android:statusBarColor">@color/statusBarColor</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Theme.PreferenciasDoUsuario" parent="Base.Theme.PreferenciasDoUsuario" />
+</resources>
