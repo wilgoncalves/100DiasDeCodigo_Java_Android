@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="my_dark_primary">#332520</color>
+    <color name="my_light_primary">#43302A</color>
+    <color name="statusBarColor">#85584A</color>
+    <color name="colorAccent">#85584A</color>
+    <color name="cor_fundo_caixa_texto">#FFFCC6</color>
+</resources>
