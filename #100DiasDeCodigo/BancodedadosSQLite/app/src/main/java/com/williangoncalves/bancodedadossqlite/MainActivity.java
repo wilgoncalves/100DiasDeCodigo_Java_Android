@@ -28,23 +28,71 @@ public class MainActivity extends AppCompatActivity {
 
             // Criando banco de dados:
             SQLiteDatabase database = openOrCreateDatabase("app", MODE_PRIVATE, null);
+
             // Criando tabela:
-            database.execSQL("CREATE TABLE IF NOT EXISTS pessoas (nome VARCHAR, idade INT(3))");
+            database.execSQL("CREATE TABLE IF NOT EXISTS pessoas (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR, idade INT(3))");
+
+            // Excluindo tabela:
+            //database.execSQL("DROP TABLE pessoas");
+
             // Inserindo dados:
             //database.execSQL("INSERT INTO pessoas (nome, idade) VALUES ('Willian', 27)");
             //database.execSQL("INSERT INTO pessoas (nome, idade) VALUES ('Maria', 35)");
+            //database.execSQL("INSERT INTO pessoas (nome, idade) VALUES ('Mariana', 18)");
+            //database.execSQL("INSERT INTO pessoas (nome, idade) VALUES ('Pedro', 50)");
+            //database.execSQL("INSERT INTO pessoas (nome, idade) VALUES ('Mario', 40)");
+
+            // Atualizando dados:
+            //database.execSQL("UPDATE pessoas SET idade = 19, nome = 'Mariana Silva' WHERE id = 3");
+
+            // Excluindo dados:
+            //database.execSQL("DELETE FROM pessoas WHERE id = 4");
+            //database.execSQL("DELETE FROM pessoas");
+
             // Recuperar pessoas:
-            Cursor cursor = database.rawQuery("SELECT nome, idade FROM pessoas", null);
+            /*String consulta =
+                    "SELECT nome, idade FROM pessoas " +
+                    "WHERE nome = 'Willian' AND idade = 27"; */
+
+            /*String consulta =
+                    "SELECT nome, idade FROM pessoas " +
+                    "WHERE idade >= 35 OR idade = 18"; */
+
+            /*String consulta =
+                    "SELECT nome, idade FROM pessoas " +
+                    "WHERE nome IN('Maria','Willian')"; */
+
+            /*String consulta =
+                    "SELECT nome, idade FROM pessoas " +
+                    "WHERE idade BETWEEN 20 AND 35"; */
+
+            /*String consulta =
+                    "SELECT nome, idade FROM pessoas " +
+                    "WHERE nome LIKE 'mar%'"; */
+
+            /*String consulta =
+                    "SELECT nome, idade FROM pessoas " +
+                    "WHERE 1=1 ORDER BY idade ASC LIMIT 3"; */
+
+            String consulta =
+                    "SELECT * FROM pessoas";
+
+            Cursor cursor = database.rawQuery(consulta, null);
 
             // Índices da tabela:
+            int indiceId = cursor.getColumnIndex("id");
             int indiceNome = cursor.getColumnIndex("nome");
             int indiceIdade = cursor.getColumnIndex("idade");
 
             cursor.moveToFirst();
 
             while (cursor != null) {
-                Log.i("RESULTADO - nome: ", cursor.getString(indiceNome));
-                Log.i("RESULTADO - idade: ", cursor.getString(indiceIdade));
+
+                String id = cursor.getString(indiceId);
+                String nome = cursor.getString(indiceNome);
+                String idade = cursor.getString(indiceIdade);
+
+                Log.i("RESULTADO - id: ", id + " / nome: " + nome + " / idade: " + idade);
                 cursor.moveToNext();
             }
 
