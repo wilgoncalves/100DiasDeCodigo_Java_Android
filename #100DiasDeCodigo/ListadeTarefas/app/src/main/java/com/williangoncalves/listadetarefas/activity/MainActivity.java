@@ -3,8 +3,10 @@ package com.williangoncalves.listadetarefas.activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewLista;
     private ActivityMainBinding binding;
+    private AdapterTarefas adapterTarefas;
     private List<Tarefa> listaTarefas = new ArrayList<>();
 
     @Override
@@ -37,24 +40,36 @@ public class MainActivity extends AppCompatActivity {
 
         // Configurando Recycler:
         recyclerViewLista = findViewById(R.id.recyclerViewLista);
+        recyclerViewLista
+    }
 
-        // Configurando Adapter:
-        AdapterTarefas adapterTarefas = new AdapterTarefas(listaTarefas);
+    public void carregarListaDeTarefas() {
 
+        // Listar tarefas:
+        Tarefa tarefa1 = new Tarefa();
+        tarefa1.setNomeTarefa("Ir ao mercado");
+        listaTarefas.add(tarefa1);
+
+        Tarefa tarefa2 = new Tarefa();
+        tarefa2.setNomeTarefa("Ir à feira");
+        listaTarefas.add(tarefa2);
+
+        // Configurar adapter:
+        adapterTarefas = new AdapterTarefas(listaTarefas);
+
+        // Configurar RecyclerView:
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerViewLista.setLayoutManager(layoutManager);
         recyclerViewLista.setHasFixedSize(true);
-        recyclerViewLista.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
+        recyclerViewLista.addItemDecoration(new DividerItemDecoration(getApplicationContext(), LinearLayout.VERTICAL));
         recyclerViewLista.setAdapter(adapterTarefas);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    }
 
-                Intent intent = new Intent(getApplicationContext(), AdicionarTarefaActivity.class);
-                startActivity(intent);
-            }
-        });
+    @Override
+    protected void onStart() {
+        carregarListaDeTarefas();
+        super.onStart();
     }
 
     @Override

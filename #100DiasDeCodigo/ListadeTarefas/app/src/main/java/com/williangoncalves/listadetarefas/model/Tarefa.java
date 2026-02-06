@@ -1,23 +1,25 @@
 package com.williangoncalves.listadetarefas.model;
 
-public class Tarefa {
+import java.io.Serializable;
 
-    private String tarefa;
+public class Tarefa implements Serializable {
 
-    public Tarefa() {
+    private Long id;
+    private String nomeTarefa;
 
+    public Long getId() {
+        return id;
     }
 
-    public Tarefa(String tarefa) {
-        this.tarefa = tarefa;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-
-    public String getTarefa() {
-        return tarefa;
+    public String getNomeTarefa() {
+        return nomeTarefa;
     }
 
-    public void setTarefa(String tarefa) {
-        this.tarefa = tarefa;
+    public void setNomeTarefa(String nomeTarefa) {
+        this.nomeTarefa = nomeTarefa;
     }
 }
