@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -14,11 +15,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.williangoncalves.listadetarefas.R;
+import com.williangoncalves.listadetarefas.RecyclerItemClickListener;
 import com.williangoncalves.listadetarefas.adapter.AdapterTarefas;
 import com.williangoncalves.listadetarefas.databinding.ActivityMainBinding;
 import com.williangoncalves.listadetarefas.model.Tarefa;
 
 import android.view.Menu;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -40,7 +43,28 @@ public class MainActivity extends AppCompatActivity {
 
         // Configurando Recycler:
         recyclerViewLista = findViewById(R.id.recyclerViewLista);
-        recyclerViewLista
+
+        // Adicionando evento de clique:
+        recyclerViewLista.addOnItemTouchListener(new RecyclerItemClickListener(
+            getApplicationContext(),
+            recyclerViewLista,
+            new RecyclerItemClickListener.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    Log.i("clique", "onItemClick");
+                }
+
+                @Override
+                public void onLongItemClick(View view, int position) {
+                    Log.i("clique", "onLongItemClick");
+                }
+
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                }
+            }
+        ));
     }
 
     public void carregarListaDeTarefas() {
