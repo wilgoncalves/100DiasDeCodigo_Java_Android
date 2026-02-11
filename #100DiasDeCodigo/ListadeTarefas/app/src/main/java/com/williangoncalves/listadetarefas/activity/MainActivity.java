@@ -41,6 +41,15 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), AdicionarTarefaActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // Configurando Recycler:
         recyclerViewLista = findViewById(R.id.recyclerViewLista);
 
