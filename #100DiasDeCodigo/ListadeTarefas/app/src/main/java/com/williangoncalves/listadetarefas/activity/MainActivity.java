@@ -3,11 +3,9 @@ package com.williangoncalves.listadetarefas.activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -15,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.williangoncalves.listadetarefas.R;
-import com.williangoncalves.listadetarefas.RecyclerItemClickListener;
+import com.williangoncalves.listadetarefas.helper.RecyclerItemClickListener;
 import com.williangoncalves.listadetarefas.adapter.AdapterTarefas;
 import com.williangoncalves.listadetarefas.databinding.ActivityMainBinding;
 import com.williangoncalves.listadetarefas.model.Tarefa;

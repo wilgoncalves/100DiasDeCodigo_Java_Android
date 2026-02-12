@@ -1,4 +1,4 @@
-package com.williangoncalves.listadetarefas;
+package com.williangoncalves.listadetarefas.helper;
 
 import android.content.Context;
 import android.view.GestureDetector;
