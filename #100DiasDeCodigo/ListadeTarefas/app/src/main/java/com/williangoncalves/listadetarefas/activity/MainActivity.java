@@ -1,5 +1,6 @@
 package com.williangoncalves.listadetarefas.activity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,9 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.williangoncalves.listadetarefas.R;
+import com.williangoncalves.listadetarefas.helper.DbHelper;
 import com.williangoncalves.listadetarefas.helper.RecyclerItemClickListener;
 import com.williangoncalves.listadetarefas.adapter.AdapterTarefas;
 import com.williangoncalves.listadetarefas.databinding.ActivityMainBinding;
+import com.williangoncalves.listadetarefas.helper.TarefaDAO;
 import com.williangoncalves.listadetarefas.model.Tarefa;
 
 import android.view.Menu;
@@ -77,13 +80,8 @@ public class MainActivity extends AppCompatActivity {
     public void carregarListaDeTarefas() {
 
         // Listar tarefas:
-        Tarefa tarefa1 = new Tarefa();
-        tarefa1.setNomeTarefa("Ir ao mercado");
-        listaTarefas.add(tarefa1);
-
-        Tarefa tarefa2 = new Tarefa();
-        tarefa2.setNomeTarefa("Ir à feira");
-        listaTarefas.add(tarefa2);
+        TarefaDAO tarefaDAO = new TarefaDAO(getApplicationContext());
+        listaTarefas = tarefaDAO.listar();
 
         // Configurar adapter:
         adapterTarefas = new AdapterTarefas(listaTarefas);
