@@ -9,7 +9,6 @@ import android.util.Log;
 import com.williangoncalves.listadetarefas.model.Tarefa;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class TarefaDAO implements ITarefaDAO {
@@ -42,12 +41,35 @@ public class TarefaDAO implements ITarefaDAO {
 
     @Override
     public boolean atualizar(Tarefa tarefa) {
-        return false;
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("nome", tarefa.getNomeTarefa());
+
+        try {
+            String[] args = {tarefa.getId().toString()};
+            escreve.update(DbHelper.TABELA_TAREFAS, contentValues, "id=?", args);
+            Log.i("INFO", "Tarefa atualizada com sucesso!");
+        } catch (Exception e) {
+            Log.e("INFO", "Erro ao atualizar tarefa " + e.getMessage());
+            return false;
+        }
+
+        return true;
     }
 
     @Override
     public boolean deletar(Tarefa tarefa) {
-        return false;
+
+        try {
+            String[] args = {tarefa.getId().toString()};
+            escreve.delete(DbHelper.TABELA_TAREFAS, "id=?", args);
+            Log.i("INFO", "Tarefa removida com sucesso!");
+        } catch (Exception e) {
+            Log.e("INFO", "Erro ao remover tarefa " + e.getMessage());
+            return false;
+        }
+
+        return true;
     }
 
     @Override

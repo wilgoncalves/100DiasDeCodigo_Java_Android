@@ -20,6 +20,7 @@ import com.williangoncalves.listadetarefas.model.Tarefa;
 public class AdicionarTarefaActivity extends AppCompatActivity {
 
     private TextInputEditText textTarefa;
+    private Tarefa tarefaAtual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,14 @@ public class AdicionarTarefaActivity extends AppCompatActivity {
         });
 
         textTarefa = findViewById(R.id.textTarefa);
+
+        // Recuperar tarefa, caso seja edição:
+        tarefaAtual = (Tarefa) getIntent().getSerializableExtra("tarefaSelecionada");
+
+        // Configurar tarefa na caixa de texto:
+        if (tarefaAtual != null) {
+            textTarefa.setText(tarefaAtual.getNomeTarefa());
+        }
     }
 
     @Override
@@ -46,15 +55,51 @@ public class AdicionarTarefaActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if (item.getItemId() == R.id.itemSalvar) {
+
             TarefaDAO tarefaDAO = new TarefaDAO(getApplicationContext());
 
-            String nomeTarefa = textTarefa.getText().toString();
-            if (!nomeTarefa.isEmpty()) {
+            if (tarefaAtual != null) { // edição
 
-                Tarefa tarefa = new Tarefa();
-                tarefa.setNomeTarefa(nomeTarefa);
-                tarefaDAO.salvar(tarefa);
-                finish();
+                String nomeTarefa = textTarefa.getText().toString();
+                if (!nomeTarefa.isEmpty()) {
+
+                    Tarefa tarefa = new Tarefa();
+                    tarefa.setNomeTarefa(nomeTarefa);
+                    tarefa.setId(tarefaAtual.getId());
+
+                    // Atualizar no banco de dados:
+                    if (tarefaDAO.atualizar(tarefa)) {
+                        finish();
+                        Toast.makeText(getApplicationContext(),
+                                "Sucesso ao atualizar tarefa!",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(),
+                                "Erro ao atualizar tarefa!",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            } else { // salvar
+
+                String nomeTarefa = textTarefa.getText().toString();
+                if (!nomeTarefa.isEmpty()) {
+
+                    Tarefa tarefa = new Tarefa();
+                    tarefa.setNomeTarefa(nomeTarefa);
+
+                    if (tarefaDAO.salvar(tarefa)) {
+
+                        finish();
+                        Toast.makeText(getApplicationContext(),
+                                "Sucesso ao salvar tarefa!",
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(),
+                                "Erro ao salvar tarefa!",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         }
 
